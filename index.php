@@ -21,11 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $count = $stmt->rowCount();
     // if count > 0, Database contains record about this username
     if ($count > 0) {
-        $_SESSION['username'] = $username; // Register Session Name
-        $_SESSION['id'] = $row['user_id']; // Register Session ID
-        $_SESSION['access'] = $row['access']; // Registering User Access
-        header('location: records.php'); // Redirect to dashboard page
-        exit();
+        if ($row['access'] == 3) {
+            echo 'Access Denied';
+        } else {
+            $_SESSION['username'] = $username; // Register Session Name
+            $_SESSION['id'] = $row['user_id']; // Register Session ID
+            $_SESSION['access'] = $row['access']; // Registering User Access
+            header('location: records.php'); // Redirect to dashboard page
+            exit();
+        }
     }
 }
 ?>

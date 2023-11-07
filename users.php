@@ -23,7 +23,7 @@ if ($application == 'show') {
         </div>
         <div class="card-body">
             <?php
-$stmt = $con->prepare("SELECT users.* FROM users WHERE access != 3 ORDER BY access AND fullname");
+$stmt = $con->prepare("SELECT users.* FROM users WHERE access != 3 && access != 4 ORDER BY access AND fullname");
         $stmt->execute();
         $rows = $stmt->fetchAll();
         $count = $stmt->rowCount();
@@ -230,7 +230,7 @@ if ($row['access'] == 1) {
             }
         }
         ?>
-        <h1 class="text-center">تعديل بيانات المستخدم</h1>
+        <h1 class="text-center">حذف مستخدم</h1>
         <?php } elseif ($application == 'del') {
         if (isset($_GET['userid'])) {
             $userid = $_GET['userid'];

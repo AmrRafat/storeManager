@@ -14,7 +14,7 @@
         <li class="nav-item">
             <a class="nav-link instaPage" aria-current="page" href="installments.php">الأقساط</a>
         </li>
-        <?php if ($_SESSION['access'] == 1) {
+        <?php if ($_SESSION['access'] == 1 || $_SESSION['access'] == 4) {
     ?>
         <li class="nav-item">
             <a class="nav-link usersPage" aria-current="page" href="users.php">المستخدمين</a>
@@ -27,7 +27,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="items.php">المخزن</a></a></li>
                 <li><hr class="dropdown-divider"></li>
-                <?php if ($_SESSION['access'] == 1) {?>
+                <?php if ($_SESSION['access'] == 1 || $_SESSION['access'] == 4) {?>
                 <li><a class="dropdown-item" href="cats.php">الأقسام</a></li>
                 <li><a class="dropdown-item" href="subcats.php">الأقسام الفرعية</a></li>
                 <li><a class="dropdown-item" href="bills.php">الفواتير</a></li>
