@@ -1,0 +1,471 @@
+/* Start General Rules */
+h1 {
+  font-size: 55px;
+  margin: 40px 0;
+  font-weight: bold;
+  color: #666;
+}
+
+body {
+  background-color: #dddddd;
+  font-size: 16px;
+}
+
+.astrisk {
+  position: absolute;
+  right: 50%;
+  top: 25%;
+  color: #d20707;
+}
+
+/* End Main Rules */
+/* ==================== */
+/* Start login Form */
+div.login-bg {
+  height: 100vh;
+}
+
+.login {
+  width: 50%;
+  position: relative;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+.login input {
+  margin-bottom: 10px;
+}
+
+.login .form-group {
+  background-color: #eaeaea;
+}
+
+.login .btn {
+  background-color: #008dde;
+  width: 100%;
+}
+/* End login Form */
+/* ==================== */
+/* Start navbar */
+.navbar-brand img {
+  height: 70px;
+}
+
+.collapse li a {
+  font-size: 18px;
+}
+
+.dropdown > a:focus,
+.dropdown > a:hover,
+.dropdown-menu {
+  background-color: #3498db;
+}
+
+.dropdown-menu {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1em;
+  border: none;
+  border-radius: 0;
+}
+
+.dropdown-menu a {
+  color: black;
+  transition: linear 0.3s;
+}
+
+.dropdown-divider {
+  margin: 0;
+}
+
+.dropdown-menu a:hover {
+  color: inherit;
+  padding-left: calc(var(--bs-dropdown-item-padding-x) + 5px);
+}
+
+.navbar-collapse.collapse {
+  position: relative;
+}
+
+.navbar-collapse.collapse.show ul {
+  position: relative;
+}
+
+form div.form-group {
+  position: relative;
+}
+li.settings.about {
+  position: relative;
+}
+
+li.settings.about::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 2.5px solid #eee;
+  height: 5px;
+  width: 5px;
+  top: 0;
+}
+/* End navbar */
+/* ==================== */
+/* Start User Page */
+form.userAdd {
+  background-color: #b6b6b6;
+}
+
+form.userAdd .col-6 {
+  position: relative;
+}
+
+form.userAdd .astrisk {
+  right: 99%;
+}
+
+form.userAdd input[type="submit"] {
+  height: 6rem;
+}
+/* End User Page */
+/* ==================== */
+/* Start Cats Page */
+.catAdd {
+  background-color: #b6b6b6;
+  display: none;
+}
+
+.catAdd.active {
+  display: block;
+}
+
+.catAdd .col-5 {
+  position: relative;
+}
+
+.catAdd .col-5 .astrisk {
+  right: 100%;
+}
+
+.catEdit .astrisk {
+  right: 97%;
+}
+/* End Cats Page */
+/* ==================== */
+/* Start Subcats Page */
+.newSubcatForm {
+  background-color: #b6b6b6;
+  display: none;
+}
+.newSubcatForm.active {
+  display: block;
+}
+
+.newSubcatForm .col-3 .astrisk {
+  right: 98%;
+}
+
+.subCat,
+.mainCat {
+  cursor: pointer;
+  position: relative;
+}
+
+.subCat.asc::after,
+.mainCat.asc::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(16px, -50%);
+  border: 7px solid;
+  border-color: transparent transparent black transparent;
+}
+.subCat.desc::after,
+.mainCat.desc::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateX(16px);
+  border: 7px solid;
+  border-color: black transparent transparent transparent;
+}
+/* End Subcats Page */
+/* ==================== */
+/* Start Items Page */
+form.item,
+form.quantity {
+  background-color: #b6b6b6;
+}
+
+form.item .col,
+form.quantity .col,
+form.quantity .col-2 {
+  position: relative;
+}
+
+form.item .col .astrisk,
+form.quantity .col-2 .astrisk,
+form.quantity .col .astrisk {
+  right: 99%;
+}
+
+.codes,
+.names,
+.cats,
+.subcats,
+.catcodes,
+.catnames,
+.catsubcats {
+  position: relative;
+  cursor: pointer;
+}
+
+.codeASC::after,
+.nameASC::after,
+.catASC::after,
+.subcatASC::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-5px, -50%);
+  border: 7px solid;
+  border-color: transparent transparent black transparent;
+  z-index: 1000;
+}
+
+.codeDESC::after,
+.nameDESC::after,
+.catDESC::after,
+.subcatDESC::after {
+  content: "";
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateX(-5px);
+  border: 7px solid;
+  border-color: black transparent transparent transparent;
+}
+.catASC::after {
+  transform: translate(5px, -50%);
+}
+.catDESC::after {
+  transform: translateX(5px);
+}
+.nameASC::after {
+  transform: translate(30px, -50%);
+}
+.nameDESC::after {
+  transform: translateX(30px);
+}
+/* End Items Page */
+/* ==================== */
+/* Start Records Page */
+.new-record-form,
+.new-user-form,
+.receive {
+  display: none;
+}
+.new-record-form.active,
+.new-user-form.active,
+.receive.active {
+  display: flex;
+}
+.new-user-form.active .astrisk {
+  display: none;
+}
+
+.new-record-form .astrisk {
+  display: none;
+}
+
+.form {
+  background-color: #b6b6b6;
+}
+/* End Records Page */
+/* ==================== */
+/* Start Installments Page */
+.instaItem {
+  background-color: #b6b6b6;
+}
+
+.instaItem .row {
+  align-items: center;
+}
+
+a.instaName {
+  min-height: 50px;
+}
+
+.card-body.instaItem .col,
+.card-body.instaItem .col-7 {
+  position: relative;
+}
+.card-body.instaItem .col .astrisk,
+.card-body.instaItem .col-7 .astrisk {
+  right: 97%;
+}
+
+.card-body.instaItem .form-control {
+  border-color: #929496;
+}
+
+.card-body.instaItem label {
+  padding: 0.375rem 0.75rem;
+}
+
+tr.editM,
+tr.bad {
+  display: none;
+}
+tr.editM.active,
+tr.bad.active {
+  display: table-row;
+}
+
+.delItem {
+  display: none;
+}
+
+.delItem.active {
+  display: block;
+}
+
+tr[data-done="1"] {
+  text-decoration: line-through;
+}
+/* End Installments Page */
+/* ==================== */
+/* Start Bills Page */
+.newBillForm {
+  display: none;
+}
+.newBillForm.active {
+  display: block;
+  background-color: #929496;
+}
+.newBillForm .astrisk {
+  right: 99%;
+}
+.error,
+.success,
+.successDel {
+  display: none;
+}
+.error.active,
+.success.active,
+.successDel.active {
+  display: block;
+}
+.dataShow hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.dataInfo .row.data {
+  min-height: 50px;
+  overflow: hidden;
+}
+.dataInfo .row.data .delCol {
+  position: relative;
+}
+
+.dataInfo .row.data:hover {
+  background-color: #eeeeee;
+}
+
+.delBill {
+  position: absolute;
+  transition: ease-in-out 0.4s;
+  top: 50%;
+  right: 120%;
+  transform: translate(50%, -50%);
+}
+.dataInfo .row.data:hover .delBill {
+  right: 50%;
+}
+/* End Bills Page */
+/* ==================== */
+/* Start Calcs Page */
+h1.calcs {
+  margin-top: 200px;
+}
+
+.options {
+  margin-top: 100px;
+}
+
+.options .row {
+  height: 200px;
+}
+
+.options .col {
+  height: inherit;
+  background-color: #00d2d3;
+  font-size: 23px;
+  font-weight: bold;
+  color: #eee;
+  position: relative;
+  top: 0;
+  transition: top ease-in-out 0.3s;
+}
+
+.options .col:hover {
+  top: -20px;
+}
+
+.spendingsForm .astrisk {
+  right: 97%;
+}
+
+.spendingMsg,
+.spendingDelMsg {
+  display: none;
+}
+
+.spendingMsg.active,
+.spendingDelMsg.active {
+  display: block;
+}
+
+tbody.data tr.infoData {
+  min-height: 55px;
+  height: 55px;
+}
+
+.forth {
+  width: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.data .spendingDel {
+  position: absolute;
+  transition: ease-in-out 0.4s;
+  top: 50%;
+  right: 150%;
+  transform: translate(50%, -50%);
+}
+
+.data tbody tr:hover .spendingDel {
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.monthsCalcshead {
+  margin-top: 100px;
+}
+.months .col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00d2d3;
+  color: #eee;
+  font-size: 22px;
+  font-weight: bold;
+  height: 100px;
+}
+/* End Calcs Page */
+/* ==================== */
+/* ==================== */

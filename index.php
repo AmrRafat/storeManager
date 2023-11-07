@@ -10,8 +10,8 @@ include "init.php";
 
 // Check if User comming from HTTP Post Request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['user'];
-    $password = $_POST['pass'];
+    $username = filter_var($_POST['user'], FILTER_SANITIZE_STRING);
+    $password = filter_var($_POST['pass'], FILTER_SANITIZE_STRING);
     $hashedPass = sha1($password);
     // Check if user is in database
     $stmt = $con->prepare(

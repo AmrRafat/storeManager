@@ -185,7 +185,7 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
                 exit();
             }
             $cat_id = $_POST['cats'];
-            $subcat_name = !empty($_POST['subcat_name']) ? $_POST['subcat_name'] : $_POST['original_subcat_name'];
+            $subcat_name = !empty($_POST['subcat_name']) ? filter_var($_POST['subcat_name'], FILTER_SANITIZE_STRING) : $_POST['original_subcat_name'];
             $user_id1 = $_SESSION['id'];
             $stmt = $con->prepare("SELECT * FROM subcats WHERE subcat_name = ? AND cat_id = ?");
             $stmt->execute(array($subcat_name, $cat_id));

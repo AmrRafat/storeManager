@@ -1,14 +1,14 @@
 <?php
 
-$dsn = "mysql:host/localhost;dbname=store;port="; // Put the port number for your database
-$user = "root";
-$pass = "";
-$options = array(
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-);
+$host = 'localhost'; //mysql host name
+$user = 'root'; //mysql username
+$pass = ''; //mysql password
+$db = ''; //mysql database
+$port = 3307;
+$dsn = "mysql:host=$host;dbname=$db;port=$port;charset=UTF8";
 
 try {
-    $con = new PDO($dsn, $user, $pass, $options);
+    $con = new PDO($dsn, $user, $pass);
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "Connection is perfect" . "<br>";
     $con->query('USE store');

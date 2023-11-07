@@ -123,7 +123,7 @@ foreach ($rows as $row) {?>
         <?php } elseif ($application == 'update') {
         echo '<h1 class="text-center">تعديل قسم</h1>';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $cat_name = $_POST['cat_name'];
+            $cat_name = filter_var($_POST['cat_name'], FILTER_SANITIZE_STRING);
             $user_id1 = $_SESSION['id'];
             $stmt = $con->prepare("SELECT cat_name FROM cats WHERE cat_name = ?");
             $stmt->execute(array($cat_name));

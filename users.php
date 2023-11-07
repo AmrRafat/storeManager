@@ -97,9 +97,9 @@ if ($row['access'] == 1) {
             </form>
             <?php } elseif ($application == 'apply') {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $user_fullname = $_POST['userfullname'];
-            $username = $_POST['username'];
-            $hashedPass = sha1($_POST['password']);
+            $user_fullname = filter_var($_POST['userfullname'], FILTER_SANITIZE_STRING);
+            $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+            $hashedPass = sha1(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
             $access = $_POST['access'];
             $stmt = $con->prepare("SELECT username FROM users WHERE username = ?");
             $stmt->execute(array($username));
@@ -193,9 +193,9 @@ if ($row['access'] == 1) {
         ?>
         <?php } elseif ($application == 'update') {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $username = !empty($_POST['username']) ? $_POST['username'] : $_POST['original_user_name'];
-            $fullname = !empty($_POST['userfullname']) ? $_POST['userfullname'] : $_POST['original_user_fullname'];
-            $hashedPass = !empty($_POST['username']) ? sha1($_POST['username']) : $_POST['original_user_password'];
+            $username = !empty($_POST['username']) ? filter_var($_POST['username'], FILTER_SANITIZE_STRING) : $_POST['original_user_name'];
+            $fullname = !empty($_POST['userfullname']) ? filter_var($_POST['userfullname'], FILTER_SANITIZE_STRING) : $_POST['original_user_fullname'];
+            $hashedPass = !empty($_POST['password']) ? sha1(filter_var($_POST['password'], FILTER_SANITIZE_STRING)) : $_POST['original_user_password'];
             $access = $_POST['access'];
             $stmt = $con->prepare("SELECT * FROM users WHERE username = ?");
             $stmt->execute(array($username));

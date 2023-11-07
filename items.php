@@ -490,13 +490,13 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
             }
             $catid = $_POST['cat'];
             $subcatid = $_POST['subcat'];
-            $item_price = $_POST['item_purchase_price'];
-            $item_amount = $_POST['item_amount'];
+            $item_price = filter_var($_POST['item_purchase_price'], FILTER_SANITIZE_NUMBER_FLOAT);
+            $item_amount = filter_var($_POST['item_amount'], FILTER_SANITIZE_NUMBER_INT);
             $userid = $_SESSION['id'];
             if ($_GET['way'] == 'item') {
                 echo '<h1 class="text-center">إضافة صنف جديد</h1>';
-                $item_name = $_POST['item_name'];
-                $least_amount = $_POST['item_leastamount'];
+                $item_name = filter_var($_POST['item_name'], FILTER_SANITIZE_STRING);
+                $least_amount = filter_var($_POST['item_leastamount'], FILTER_SANITIZE_NUMBER_INT);
                 $stmt = $con->prepare("SELECT * FROM items WHERE cat_id = ? AND subcat_id = ? ORDER BY item_code DESC");
                 $stmt->execute(array($catid, $subcatid));
                 $count = $stmt->rowCount();
@@ -732,10 +732,10 @@ foreach ($rows as $row) {
             // Catch inputs
             $catid = $_POST['cat'];
             $subcatid = $_POST['subcat'];
-            $itemname = $_POST['item1'];
-            $price = $_POST['price'];
-            $amount = $_POST['amount'];
-            $leastamount = $_POST['leastamount'];
+            $itemname = filter_var($_POST['item1'], FILTER_SANITIZE_STRING);
+            $price = filter_var($_POST['price'], FILTER_SANITIZE_NUMBER_FLOAT);
+            $amount = filter_var($_POST['amount'], FILTER_SANITIZE_NUMBER_INT);
+            $leastamount = filter_var($_POST['leastamount'], FILTER_SANITIZE_NUMBER_INT);
             // Updating DB
             if (
                 $catid != $beforeEdit['cat_id'] ||
