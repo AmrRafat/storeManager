@@ -28,14 +28,14 @@ echo $today;
             </div>
         </div>
         <div class="card-body start">
-            <div class="input-group mb-4 mt-3 new-record-form">
-                <span style="position: absolute; top:-18px;right:-8px; cursor:pointer;"><i class="fa-regular fa-circle-xmark close-new-record btn btn-danger rounded-circle" style="padding: 7px; font-size: 20px; "></i></span>
-                <div class="form form-control text-center">
-                    <div class="row p-3">
-                    <div class="col-1 ps-1">
-                    <select class="form-control text-center z-3" required = "required" name="code" id="code">
-                                <option value="0">الكود</option>
-                                <?php
+            <form class="form-control py-2 mb-3 new-record-form">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">الكود</span>
+                            <select class="form-control text-center z-3" required = "required" name="code" id="code">
+                                <option value="0">...</option>
+                                    <?php
 $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDER BY item_code");
         $stmt->execute();
         $codes = $stmt->fetchAll();
@@ -49,10 +49,13 @@ $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDE
         }
         ?>
                             </select>
+                        </div>
                     </div>
-                    <div class="col-2 ps-1 pe-1">
-                    <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
-                                <option value="0">القسم</option>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">القسم</span>
+                            <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
+                                <option value="0">...</option>
                                 <?php
 $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         $stmt->execute();
@@ -72,8 +75,11 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         }
         ?>
                             </select>
+                        </div>
                     </div>
-                    <div class="col-2 ps-1 pe-1">
+                    <div class="col-6 mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">القسم الفرعى</span>
                             <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
                             <option selected value="0">برجاء اختيار القسم أولا</option>
                                 <?php
@@ -100,13 +106,16 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
         ?>
                             </select>
                         </div>
-                        <div class="col-2 ps-1 pe-1">
+                    </div>
+                    <div class="col-6 mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">الصنف</span>
                             <select name="item1" class="form-control text-center z-3" required = "required" id="item1">
-                            <option selected value="0">برجاء اختيار القسم أولا</option>
+                                <option selected value="0">برجاء اختيار القسم أولا</option>
                                 <?php
 if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
-                            <option selected value="0">برجاء اختيار القسم أولا</option>
-                            <?php } elseif (isset($selectedSubCat)) {
+    <option selected value="0">برجاء اختيار القسم أولا</option>
+    <?php } elseif (isset($selectedSubCat)) {
             $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 ORDER BY item_name");
             $stmt->execute();
             $items = $stmt->fetchAll();
@@ -122,24 +131,42 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
         ?>
                             </select>
                         </div>
-                        <div class="col-1 ps-1 pe-1">
-                            <input type="text" disabled class="z-3 ps-0 text-center avail form-control" name="avail" required='required' autocomplete="off" value="المتاح">
-                        </div>
-                        <div class="col-1 ps-1 pe-1">
-                            <input type="number" min="1" max="" class="z-3 ps-0 text-center amount form-control" name="selling_amount" required='required' autocomplete="off" placeholder="الكمية">
-                        </div>
-                        <div class="col-2 ps-1 pe-1">
-                            <input type="number" min="0" step="0.01" class="z-3 ps-0 text-center form-control unit-price" name="unit_price" required='required' autocomplete="off" placeholder="سعر القطعة">
-                        </div>
-                        <div class="col-1 pe-1">
-                            <input type="number" min="0" step="0.01" class="z-3 ps-0 total-price text-center form-control" name="total" required='required' autocomplete="off" placeholder="الإجمالى">
+                    </div>
+                    <div class="col-6 mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">المتاح</span>
+                            <input type="text" disabled class="z-3 ps-0 text-center avail form-control" name="avail" required='required' autocomplete="off" value="...">
                         </div>
                     </div>
-                    <button class="submit-button" type="submit" style="border: none; position:absolute; top:0; left:0;">
-                        <span style="position: absolute; top:-18px;left:-8px; cursor:pointer;"><i class="fa-regular fa-circle-check btn btn-success rounded-circle" style="padding: 7px; font-size: 20px; "></i></span>
-                    </button>
+                    <div class="col-6 mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">الكمية</span>
+                            <input type="number" min="1" max="" class="z-3 ps-0 text-center amount form-control" name="selling_amount" required='required' autocomplete="off" placeholder="...">
+                        </div>
+                    </div>
+                    <div class="col-6 mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">سعر القطعة</span>
+                            <input type="number" min="0" step="0.01" class="z-3 ps-0 text-center form-control unit-price" name="unit_price" required='required' autocomplete="off" placeholder="...">
+                        </div>
+                    </div>
+                    <div class="col-6 mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text inputSpan justify-content-center">الإجمالى</span>
+                            <input type="number" min="0" step="0.01" class="z-3 ps-0 total-price text-center form-control" name="total" required='required' autocomplete="off" placeholder="...">
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <hr class="my-3">
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-success form-control submit-button">تسجل البيع</button>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-danger form-control close-new-record">إغلاق</button>
+                    </div>
+                </div>
+            </form>
             <div class="errorMsg alert alert-danger text-center" style="display: none;">برجاء إكمال جميع الاختيارات</div>
             <div class="errorMsgAmount alert alert-danger text-center" style="display: none;">لقد تعديت الكمية المتاحة</div>
             <div class="successMsg alert alert-success text-center" style="display: none;">تمت الإضافة بنجاح</div>

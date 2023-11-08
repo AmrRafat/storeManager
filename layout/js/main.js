@@ -699,19 +699,19 @@ $(function () {
   // ================
   // Showing New Record Form
   $("span.new-record").click(function () {
-    if ($("div.new-record-form").hasClass("active") == false) {
+    if ($(".new-record-form").hasClass("active") == false) {
       $("span.new-record").removeClass("btn-primary");
       $("span.new-record").addClass("btn-success");
-      $("div.new-record-form").addClass("active");
+      $(".new-record-form").addClass("active");
     }
   });
   // Close new record form
   $(".close-new-record").click(function () {
-    $(".start .form input").not(".avail").val("");
+    $(".start form input").not(".avail").val("");
     $(".avail").val("المتاح");
-    $(".start .form select#code, .start .form select#cat").val(0);
-    $(".start .form select#subcat, .start .form select#item1").empty();
-    $(".start .form select#subcat, .start .form select#item1").append(
+    $(".start form select#code, .start form select#cat").val(0);
+    $(".start form select#subcat, .start form select#item1").empty();
+    $(".start form select#subcat, .start form select#item1").append(
       '<option selected value="0">برجاء اختيار القسم أولا</option>'
     );
     $(".new-record").removeClass("btn-success");
@@ -719,7 +719,8 @@ $(function () {
     $(".new-record-form").removeClass("active");
   });
   // Validate and submit data into DB
-  $(".submit-button").click(function () {
+  $(".submit-button").click(function (e) {
+    e.preventDefault();
     var code = $("#code").val();
     var cat = $("#cat").val();
     var subcat = $("#subcat").val();
@@ -778,20 +779,20 @@ $(function () {
       setTimeout(function () {
         $(".successMsg").prop("style", true);
         $(".successMsg").attr("style", "display:none;");
-        $(".start .form input").not(".avail").val("");
+        $(".start form input").not(".avail").val("");
         $(".avail").val("المتاح");
-        $(".start .form select#code, .start .form select#cat").val(0);
-        $(".start .form select#subcat, .start .form select#item1").empty();
-        $(".start .form select#subcat, .start .form select#item1").append(
+        $(".start form select#code, .start form select#cat").val(0);
+        $(".start form select#subcat, .start form select#item1").empty();
+        $(".start form select#subcat, .start form select#item1").append(
           '<option selected value="0">برجاء اختيار القسم أولا</option>'
         );
-        $(".start .form select, .start .form input").blur();
+        $(".start form select, .start form input").blur();
       }, 1000);
       checkTotal();
     }
   });
   // Remove error Msg upon changing
-  $(".start .form input, .start .form select").change(function () {
+  $(".start form input, .start form select").on("change keyup", function () {
     $(".errorMsg").prop("style", true);
     $(".errorMsg").attr("style", "display:none;");
     $(".errorMsgAmount").prop("style", true);
@@ -1322,6 +1323,7 @@ function addSpending() {
           amount: amount,
         },
         success: function (html) {
+          $(".spendingsForm")[0].reset();
           $(".data").html(html);
           $(".spendingMsg").addClass("active");
           delSpending();

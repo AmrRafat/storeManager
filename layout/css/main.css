@@ -268,7 +268,18 @@ form.quantity .col .astrisk {
 .receive {
   display: none;
 }
-.new-record-form.active,
+
+/* .recordFormNew {
+  background-color: #ddd;
+} */
+
+.inputSpan {
+  width: 116px;
+}
+.new-record-form.active {
+  display: block;
+}
+
 .new-user-form.active,
 .receive.active {
   display: flex;
