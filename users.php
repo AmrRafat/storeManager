@@ -68,21 +68,33 @@ if ($row['access'] == 1) {
                     <div class="col-10">
                         <div class="row mb-3 justify-content-center">
                             <div class="col-6">
-                                <input type="text" class="z-3 text-center form-control" name="userfullname" required='required' autocomplete="off" placeholder="اسم المستخدم الكامل">
+                                <div class="input-group">
+                                    <span class="input-group-text justify-content-center">اسم المستخدم الكامل</span>
+                                    <input type="text" class="z-3 text-center form-control" name="userfullname" required='required' autocomplete="off" placeholder=".......">
+                                </div>
                             </div>
                             <div class="col-6">
-                                <select name="access" class="text-center z-3 form-control" required = 'required'>
-                                    <option value="0">بائع</option>
-                                    <option value="1">صاحب محل</option>
-                                </select>
+                                <div class="input-group">
+                                    <span class="input-group-text justify-content-center">صلاحية المستخدم</span>
+                                    <select name="access" class="text-center z-3 form-control" required = 'required'>
+                                        <option value="0">بائع</option>
+                                        <option value="1">صاحب محل</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-6">
-                                <input type="text" class="z-3 text-center form-control" name="username" required='required' autocomplete="off" placeholder="اسم المستخدم للدخول">
+                                <div class="input-group">
+                                    <span class="input-group-text justify-content-center">اسم المستخدم للدخول</span>
+                                    <input type="text" class="z-3 text-center form-control" name="username" required='required' autocomplete="off" placeholder="يستخدم فى صفحة الدخول">
+                                </div>
                             </div>
                             <div class="col-6">
-                                <input type="password" class="z-3 text-center form-control" name="password" required='required' autocomplete="off" placeholder="كلمة المرور">
+                                <div class="input-group">
+                                    <span class="input-group-text justify-content-center">كلمة المرور</span>
+                                    <input type="password" class="z-3 text-center form-control" name="password" required='required' autocomplete="off" placeholder="كلمة المرور">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,41 +147,34 @@ if ($row['access'] == 1) {
             $stmt->execute(array($userid));
             $user = $stmt->fetch();?>
             <h1 class="text-center">تعديل المستخدم</h1>
-            <form class="form-control text-center p-4" action="?application=update&userid=<?php echo $userid ?>" method="post">
+            <form class="form-control text-center p-4 w-75 mx-auto rounded-4 edit-app-user" action="?application=update&userid=<?php echo $userid ?>" method="post">
                 <input type="hidden" name="original_user_name" value="<?php echo $user['username'] ?>">
                 <input type="hidden" name="original_user_fullname" value="<?php echo $user['fullname'] ?>">
                 <input type="hidden" name="original_user_password" value="<?php echo $user['password'] ?>">
                 <input type="hidden" name="original_user_access" value="<?php echo $user['access'] ?>">
-                <table class="table table-striped rounded align-middle">
-                    <tr class="rounded-top">
-                        <th>نوع البيانات</th>
-                        <th>البيانات القديمة</th>
-                        <th class="ps-3">التعديلات</th>
-                    </tr>
-                    <tr>
-                        <td>اسم المستخدم بالكامل</td>
-                        <td><?php echo $user['fullname'] ?></td>
-                        <td class="ps-3"><input type="text" class="z-3 text-center form-control" name="userfullname" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو"></td>
-                    </tr>
-                    <tr>
-                        <td>سم المستخدم للدخول</td>
-                        <td><?php echo $user['username'] ?></td>
-                        <td class="ps-3"><input type="text" class="z-3 text-center form-control" name="username" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو"></td>
-                    </tr>
-                    <tr>
-                        <td>كلمة المرور</td>
-                        <td>***********</td>
-                        <td class="ps-3"><input type="password" class="z-3 text-center form-control" name="password" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو"></td>
-                    </tr>
-                    <tr>
-                        <td>صلاحية المستخدم</td>
-                        <td><?php if ($user['access'] == 0) {echo 'بائع';} else {echo "صاحب محل";}?></td>
-                        <td class="ps-3"><select name="access" class="text-center form-control z-3">
-                            <option value="0" <?php if ($user['access'] == 0) {echo ' selected ';}?> >بائع</option>
-                            <option value="1"  <?php if ($user['access'] == 1) {echo ' selected ';}?>>صاحب محل</option>
-                        </select></td>
-                    </tr>
-                </table>
+                <div class="input-group">
+                    <span class="input-group-text justify-content-center">اسم السمتخدم بالكامل</span>
+                    <span class="input-group-text justify-content-center"><?php echo $user['fullname'] ?></span>
+                    <input type="text" class="z-3 text-center form-control" name="userfullname" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو">
+                </div>
+                <div class="input-group mt-3">
+                    <span class="input-group-text justify-content-center">سم المستخدم للدخول</span>
+                    <span class="input-group-text justify-content-center"><?php echo $user['username'] ?></span>
+                    <input type="text" class="z-3 text-center form-control" name="username" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو">
+                </div>
+                <div class="input-group mt-3">
+                    <span class="input-group-text justify-content-center">كلمة المرور</span>
+                    <span class="input-group-text justify-content-center">***********</span>
+                    <input type="password" class="z-3 text-center form-control" name="password" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو">
+                </div>
+                <div class="input-group my-3">
+                    <span class="input-group-text justify-content-center">صلاحية المستخدم</span>
+                    <span class="input-group-text justify-content-center"><?php if ($user['access'] == 0) {echo 'بائع';} else {echo "صاحب محل";}?></span>
+                    <select name="access" class="text-center form-control z-3">
+                        <option value="0" <?php if ($user['access'] == 0) {echo ' selected ';}?> >بائع</option>
+                        <option value="1"  <?php if ($user['access'] == 1) {echo ' selected ';}?>>صاحب محل</option>
+                    </select>
+                </div>
                 <div class=" row form-control-lg justify-content-center">
                     <div class="col-3">
                         <input type="submit" value="تعديل" class="btn form-control btn-primary">

@@ -23,36 +23,16 @@ if ($application == 'show') {?>
     <h1 class="text-center">المصاريف</h1>
     <div class="card">
         <div class="card-header p-3">
-            <form class="text-center spendingsForm">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col">
-                        <label class="form-label">نوع المصاريف</label>
-                    </div>
-                    <div class="col-3 position-relative">
-                        <input type="text" name="spending_name" class="spending_name form-control" required="required">
-                    </div>
-                    <div class="col-1">
-                        <label class="form-label">التاريخ</label>
-                    </div>
-                    <div class="col position-relative">
-                        <input type="date" name="date" class="date form-control" required="required">
-                    </div>
-                    <div class="col-1">
-                        <label class="form-label">المبلغ</label>
-                    </div>
-                    <div class="col position-relative">
-                        <input type="number" name="amount" min="1" step="0.01" class="amount form-control" required="required">
-                    </div>
-                    <div class="col">
-                        <div class="row justify-content-center">
-                            <div class="col">
-                                <button type="submit" class="form-control btn btn-success spendingAdd">إضافة</button>
-                            </div>
-                            <div class="col">
-                                <a href="?application=show" class="btn btn-primary form-control text-decoration-none">رجوع</a>
-                            </div>
-                        </div>
-                    </div>
+            <form class="text-center spendingsForm form-control py-3">
+                <div class="input-group w-75 mx-auto">
+                    <span class="input-group-text">نوع المصاريف</span>
+                    <input type="text" name="spending_name" class="spending_name form-control" required="required">
+                    <span class="input-group-text">التاريخ</span>
+                    <input type="date" name="date" class="date form-control" required="required">
+                    <span class="input-group-text">المبلغ</span>
+                    <input type="number" name="amount" min="1" step="0.01" class="amount form-control" required="required">
+                    <button type="submit" class="btn btn-success spendingAdd">إضافة</button>
+                    <a href="?application=show" class="text-decoration-none btn-primary btn">رجوع</a>
                 </div>
             </form>
         </div>
@@ -134,16 +114,10 @@ if (isset($_GET['selectedYear'])) {
         </div>
     </div>
     <div class="monthsOptions">
-        <div class="row justify-content-center text-center">
-<div class="col-2">
-    <input type="number" name="year" id="year" min="2020" max="2099" step="1" class="text-center form-control" value="<?php echo $year = date('Y') ?>">
-</div>
-<div class="col-2">
-    <span class="btn btn-primary form-control changeYear">تغيير السنة</span>
-</div>
-<div class="col-2">
-    <a href="?application=show" class="btn btn-primary text-decoration-none form-control">رجوع</a>
-</div>
+        <div class="input-group mx-auto">
+            <input type="number" name="year" id="year" min="2020" max="2099" step="1" class="text-center form-control" value="<?php echo $year = date('Y') ?>">
+            <button type="button" class="btn btn-success changeYear">تغيير السنة</button>
+            <a href="?application=show" class="btn btn-primary text-decoration-none">رجوع</a>
         </div>
     </div>
     <?php } elseif ($application == 'analyse') {?>
@@ -288,9 +262,11 @@ $lastDay = date('d', strtotime($lastDate));
                 <div class="card-header d-flex justify-content-between align-content-center">
                     <h4>حسابات السنة</h4>
                     <div class="d-flex align-items-center">
-                        <input type="number" min="2020" value="<?php echo $year ?>" class="yearChanging ms-2 form-control" style="max-width:150px; display:inline-block">
-                        <span class="btn btn-primary changeYearCalc ms-2">تغيير السنة</span>
-                        <a href="?application=show" class="btn btn-primary text-decoration-none">رجوع</a>
+                        <div class="input-group">
+                            <input type="number" min="2020" value="<?php echo $year ?>" class="yearChanging form-control" style="max-width:150px; display:inline-block">
+                            <button type="button" class="btn btn-success changeYearCalc">تغيير السنة</button>
+                            <a href="?application=show" class="btn btn-primary text-decoration-none">رجوع</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body yearCalcs">

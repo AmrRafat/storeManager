@@ -22,14 +22,23 @@ if ($application == 'show') {
             <div class="success alert alert-success text-center">تم إضافة الفاتورة</div>
             <div class="successDel alert alert-success text-center">تم مسح الفاتورة</div>
             <form class="newBillForm p-3 form-control mb-3">
-                <div class="row justify-content-center align-items-center">
+                <div class="input-group mx-auto w-75">
+                    <span class="input-group-text">تاريخ الفاتورة</span>
+                    <input type="date" name="billDate" id="date" class="form-control" required="required">
+                    <span class="input-group-text">اسم البائع</span>
+                    <input placeholder="..." type="text" name="sellerName" id ="name" class="form-control" required="required">
+                    <span class="input-group-text">إجمالى الفاتورة</span>
+                    <input placeholder="00.00" type="number" name="billAmount" autocomplete="off" id="amount" min="1" class="form-control" required="required">
+                    <button type="submit" class="btn btn-success newBillBtn">إضافة</button>
+                    <button type="button" class="btn btn-danger endNewBill">إغلاق</button>
+                </div>
+                <!-- <div class="row justify-content-center align-items-center">
                     <div class="col text-center">
                         <label class="form-label">
                             تاريخ الفاتورة
                         </label>
                     </div>
                     <div class="col position-relative">
-                        <input type="date" name="billDate" id="date" class="form-control" required="required">
                     </div>
                     <div class="col text-center">
                         <label class="form-label">
@@ -37,7 +46,6 @@ if ($application == 'show') {
                         </label>
                     </div>
                     <div class="col-3 position-relative">
-                        <input type="text" name="sellerName" id ="name" class="form-control" required="required">
                     </div>
                     <div class="col text-center">
                         <label class="form-label">
@@ -45,19 +53,16 @@ if ($application == 'show') {
                         </label>
                     </div>
                     <div class="col-2 position-relative">
-                        <input type="number" name="billAmount" autocomplete="off" id="amount" min="1" class="form-control" required="required">
                     </div>
                     <div class="col">
                         <div class="row gap-1 justify-content-center">
                             <div class="col">
-                                <button type="submit" class="btn btn-success form-control newBillBtn">إضافة</button>
                             </div>
                             <div class="col">
-                                <span class="btn btn-danger form-control endNewBill">إنهاء</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </form>
             <div class="dataShow form-control">
                 <?php

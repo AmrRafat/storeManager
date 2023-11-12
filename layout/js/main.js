@@ -38,11 +38,11 @@ $(function () {
   var today = now.getFullYear() + "-" + month + "-" + day;
   $('input[type="date"]').val(today);
   // Add astrisk on required field (*)
-  $("input , select").each(function () {
-    if ($(this).attr("required") == "required") {
-      $(this).after('<span class="astrisk">*</span>');
-    }
-  });
+  // $("input , select").each(function () {
+  //   if ($(this).attr("required") == "required") {
+  //     $(this).after('<span class="astrisk">*</span>');
+  //   }
+  // });
   // Checking items for remaining amount
   $(window).ready(function () {
     $.ajax({
@@ -218,6 +218,7 @@ $(function () {
       $(".newCat").removeClass("btn-primary");
       $(".newCat").addClass("btn-success");
       $(".catAdd").addClass("active");
+      $(".catAdd input").focus();
     }
   });
   // Hide form of adding new cat
@@ -237,7 +238,8 @@ $(function () {
   });
   // Validate and submit the data into DB
   function classAdding() {
-    $(".btnAdd").click(function () {
+    $(".btnAdd").click(function (e) {
+      e.preventDefault();
       var cat = $(".catAdd input").val();
       if (cat != "") {
         $.ajax({
@@ -247,6 +249,7 @@ $(function () {
             cat: cat,
           },
           success: function (html) {
+            $(".catAdd input").focus();
             if (html == "0") {
               $(".error").removeAttr("style", "display: none;");
               $(".error").attr("style", "display: block;");
@@ -258,7 +261,7 @@ $(function () {
                 $(".success").removeAttr("style", "display: block;");
                 $(".success").attr("style", "display:none;");
                 $(".catAdd input").val("");
-                $(".catAdd input").blur();
+                $(".catAdd input").focus();
               }, 1000);
             }
           },
@@ -298,7 +301,8 @@ $(function () {
     location.reload();
   });
   // Validating and adding data to DB
-  $(".subcatAdd").click(function () {
+  $(".subcatAdd").click(function (e) {
+    e.preventDefault();
     var cat = $(".newSubcatForm select").val();
     var subcat = $(".newSubcatForm input").val();
     if (subcat != "") {
@@ -909,22 +913,24 @@ $(function () {
   // =========
   // Showing new installment user
   $("span.new-user").click(function () {
-    if ($("div.new-user-form").hasClass("active") == false) {
+    if ($(".new-user-form").hasClass("active") == false) {
       $("span.user-record").removeClass("btn-primary");
       $("span.user-record").addClass("btn-success");
-      $("div.new-user-form").addClass("active");
+      $(".new-user-form").addClass("active");
+      $(".new-user-form input").focus();
     }
   });
   // Closing new installment user
   $(".close-new-user").click(function () {
-    $(".start .form input").val("");
+    $(".new-user-form input").val("");
     $(".new-user").removeClass("btn-success");
     $(".new-user").addClass("btn-primary");
     $(".new-user-form").removeClass("active");
   });
   // Validate the data first
-  $(".submit-user-button").click(function () {
-    var name = $(".start .form input").val();
+  $(".submit-user-button").click(function (e) {
+    e.preventDefault();
+    var name = $(".new-user-form input").val();
     if (name == "") {
       $(".errorMsg").removeAttr("style");
       $(".errorMsg").prop("style", false);
@@ -937,12 +943,14 @@ $(function () {
         },
         success: function (html) {
           $(".showing-data").html(html);
+          $(".new-user-form input").val("");
+          $(".new-user-form input").focus();
         },
       });
     }
   });
   // Remove ErrorMsg by changing input
-  $(".start .form input").keyup(function () {
+  $(".new-user-form input").keyup(function () {
     $(".errorMsg").prop("style", true);
     $(".errorMsg").attr("style", "display:none;");
   });
@@ -955,6 +963,7 @@ $(function () {
       $("span.receive-btn").removeClass("btn-primary");
       $("span.receive-btn").addClass("btn-success");
       $(".receive").addClass("active");
+      $(".receive input.money").focus();
     }
   });
   // Closing Receiving Money form
@@ -1006,7 +1015,7 @@ $(function () {
             $(".success").attr("style", "display:none;");
             $(".receive input").val("");
             $(".receive input").blur();
-            location.reload();
+            // location.reload();
           }, 1000);
           editMoney();
           closeEditMoney();
@@ -1093,7 +1102,7 @@ $(function () {
               $(".success").attr("style", "display:none;");
               $(".receive input").val("");
               $(".receive input").blur();
-              location.reload();
+              // location.reload();
             }, 1000);
           },
         });
@@ -1103,6 +1112,42 @@ $(function () {
     });
   }
   doneEditMoney();
+  // Deleting money received from db
+  $(".delM").on("click", function (e) {
+    e.stopPropagation();
+    var moneyid = $(this).data("moneyid");
+    var oldMoney = $(`tr#${moneyid.trim()} input.oldMoney`).val();
+    $.ajax({
+      type: "POST",
+      url: "includes/functions/Installments/money.php",
+      data: {
+        moneyid: moneyid,
+      },
+      success: function (html) {
+        $(".installments-money table tbody").html(html);
+        var total = $("#total").val();
+        var done = $("#done").val();
+        var remain = $("#remain").val();
+        total = parseFloat(total);
+        done = parseFloat(done);
+        remain = parseFloat(remain);
+        var newDone = done - oldMoney;
+        var newRemain = total - newDone;
+        $("#done").val(newDone);
+        $("#remain").val(newRemain);
+        $(".success").removeAttr("style");
+        $(".success").prop("style", false);
+        setTimeout(function () {
+          $(".success").prop("style", true);
+          $(".success").attr("style", "display:none;");
+          $(".receive input").val("");
+          $(".receive input").blur();
+          // location.reload();
+        }, 1000);
+      },
+    });
+  });
+
   // Remove error msg upon changing input
   $("tr input").keyup(function () {
     $("tr.bad").removeClass("active");
@@ -1223,6 +1268,7 @@ $(".addBill").on("click", function () {
     $("form.newBillForm").addClass("active");
     $(".addBill").removeClass("btn-primary");
     $(".addBill").addClass("btn-success");
+    $(".newBillForm #name").focus();
   }
 });
 // Close new bill form
@@ -1258,6 +1304,7 @@ $(".newBillBtn").on("click", function (ev) {
       success: function (html) {
         $(".dataShow").html(html);
         $("form.newBillForm")[0].reset();
+        $(".newBillForm #name").focus();
         deleteData();
         $(".success").addClass("active");
         setTimeout(() => {
@@ -1324,6 +1371,7 @@ function addSpending() {
         },
         success: function (html) {
           $(".spendingsForm")[0].reset();
+          $(".spendingsForm input:first-of-type").focus();
           $(".data").html(html);
           $(".spendingMsg").addClass("active");
           delSpending();

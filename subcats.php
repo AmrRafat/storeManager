@@ -21,9 +21,9 @@ if ($application == 'show') {
             </div>
         </div>
         <div class="card-body">
-        <div class="form-control mb-3 py-3 text-center newSubcatForm">
-            <div class="row justify-content-center">
-                <div class="col-3 position-relative">
+            <form class="newSubcatForm rounded-3">
+                <div class="input-group w-75 mx-auto py-3">
+                    <span class="input-group-text">القسم</span>
                     <select name="cats" class="text-center form-control z-3" required = 'required'>
                         <option value="0">يرجى اختيار القسم</option>
                         <?php
@@ -39,18 +39,12 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         }
         ?>
                     </select>
-                </div>
-                <div class="col-3 position-relative">
+                    <span class="input-group-text">القسم الفرعى</span>
                     <input type="text" class="z-3 text-center form-control" name="subcat_name" required='required' autocomplete="off" placeholder="اسم القسم الفرعى">
+                    <button type="submit" class="btn btn-success subcatAdd">إضافة</button>
+                    <button type="button" class="btn btn-danger subcatEnd">إغلاق</button>
                 </div>
-                <div class="col-1">
-                    <span class="btn btn-primary form-control subcatAdd">إضافة</span>
-                </div>
-                <div class="col-1">
-                    <span class="btn btn-danger form-control subcatEnd">إنهاء</span>
-                </div>
-            </div>
-    </div>
+            </form>
     <div class="text-center alert alert-danger error" style="display: none;">هذا القسم الفرعى موجود بالفعل</div>
         <div class="text-center alert alert-danger error1" style="display: none;">برجاء اختيار القسم أولا</div>
         <div class="text-center alert alert-danger error2" style="display: none;">اسم القسم الفرعى فارغ</div>
@@ -114,19 +108,17 @@ foreach ($rows as $row) {?>
             <h1 class="text-center">تعديل القسم الفرعى</h1>
             <form class="form-control p-3 text-center" action="?application=update&subcatid=<?php echo $subcatid ?>" method="post">
             <input type="hidden" name="original_subcat_name" value="<?php echo $subcat['subcat_name'] ?>">
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr class="align-middle">
-                        <td class="pe-3">القسم</td>
-                        <td>الاسم القديم للقسم الفرعى</td>
-                        <td>الاسم الجديد</td>
-                        <td class="ps-3"><a href="?application=show" class="text-decoration-none btn btn-primary form-control">رجوع</a></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="align-middle">
-                        <td class="pe-3">
-                        <select name="cats" class="text-center z-3 form-control">
+            <div class="input-group w-50 mx-auto">
+                        <span class="input-group-text editSubcatlabel">اسم القسم الفرعى القديم</span>
+                        <span class="input-group-text form-control justify-content-center"><h5><?php echo $subcat['subcat_name'] ?></h5></span>
+                    </div>
+                    <div class="input-group w-50 mx-auto my-3">
+                        <span class="input-group-text editSubcatlabel">اسم القسم الفرعى الجديد</span>
+                        <input type="text" class="z-3 text-center form-control" name="subcat_name" autocomplete="off" placeholder="يمكنك تغيير اسم القسم الفرعى هنا إذا أردت">
+                    </div>
+                    <div class="input-group w-50 mx-auto mb-3">
+                <span class="input-group-text editSubcatlabel justify-content-center">القسم</span>
+                <select name="cats" class="text-center z-3 form-control">
                             <option value="0">يرجى اختيار القسم</option>
                             <?php
 $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
@@ -146,19 +138,15 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
             }
             ?>
                         </select>
-                        </td>
-                        <td>
-                        <?php echo $subcat['subcat_name'] ?>
-                        </td>
-                        <td>
-                        <input type="text" class="z-3 text-center form-control" name="subcat_name" autocomplete="off" placeholder="يمكنك تغيير اسم القسم الفرعى هنا إذا أردت">
-                        </td>
-                        <td class="ps-3">
-                        <input type="submit" value="تعديل" class="btn btn-primary form-control">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    </div>
+                    <div class="row w-50 justify-content-center mx-auto">
+                        <div class="col-3">
+                            <button type="submit" class="btn form-control btn-success">حفظ التعديلات</button>
+                        </div>
+                        <div class="col-3">
+                            <a href="?application=show" class="text-decoration-none text-reset"><button type="button" class="btn form-control btn-primary">رجوع</button></a>
+                        </div>
+                    </div>  
             </form>
             <?php
 } else {

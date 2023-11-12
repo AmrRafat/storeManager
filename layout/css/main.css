@@ -9,6 +9,7 @@ h1 {
 body {
   background-color: #dddddd;
   font-size: 16px;
+  padding-bottom: 40px;
 }
 
 .astrisk {
@@ -16,6 +17,17 @@ body {
   right: 50%;
   top: 25%;
   color: #d20707;
+}
+
+.input-group input:last-child,
+.input-group select:last-child {
+  border-top-left-radius: var(--bs-border-radius) !important;
+  border-bottom-left-radius: var(--bs-border-radius) !important;
+}
+
+h5,
+label.form-label {
+  margin-bottom: 0 !important;
 }
 
 /* End Main Rules */
@@ -112,7 +124,12 @@ li.settings.about::after {
 /* ==================== */
 /* Start User Page */
 form.userAdd {
-  background-color: #b6b6b6;
+  background-color: #b6b6b670;
+}
+
+.edit-app-user span,
+form.userAdd span {
+  width: 175px;
 }
 
 form.userAdd .col-6 {
@@ -120,12 +137,13 @@ form.userAdd .col-6 {
 }
 
 form.userAdd .astrisk {
-  right: 99%;
+  right: 85%;
 }
 
 form.userAdd input[type="submit"] {
   height: 6rem;
 }
+
 /* End User Page */
 /* ==================== */
 /* Start Cats Page */
@@ -190,6 +208,10 @@ form.userAdd input[type="submit"] {
   border: 7px solid;
   border-color: black transparent transparent transparent;
 }
+
+.editSubcatlabel {
+  width: 192px;
+}
 /* End Subcats Page */
 /* ==================== */
 /* Start Items Page */
@@ -198,16 +220,25 @@ form.quantity {
   background-color: #b6b6b6;
 }
 
-form.item .col,
-form.quantity .col,
-form.quantity .col-2 {
-  position: relative;
+.searchForm {
+  width: 660px;
 }
 
-form.item .col .astrisk,
-form.quantity .col-2 .astrisk,
-form.quantity .col .astrisk {
-  right: 99%;
+.searchForm select:first-of-type {
+  width: 140px !important;
+}
+
+.searchForm select:nth-of-type(2) {
+  width: 170px !important;
+}
+
+form.quantity .astrisk {
+  display: none;
+}
+
+form.quantity span.input-group-text {
+  width: 116px;
+  justify-content: center;
 }
 
 .codes,
@@ -260,6 +291,15 @@ form.quantity .col .astrisk {
 .nameDESC::after {
   transform: translateX(30px);
 }
+
+.editItemForm span {
+  width: 245px;
+  justify-content: center;
+}
+
+.editItemForm #cat {
+  width: 56.5px;
+}
 /* End Items Page */
 /* ==================== */
 /* Start Records Page */
@@ -269,18 +309,16 @@ form.quantity .col .astrisk {
   display: none;
 }
 
-/* .recordFormNew {
-  background-color: #ddd;
-} */
-
 .inputSpan {
   width: 116px;
 }
+
+.new-user-form.active,
 .new-record-form.active {
+  background-color: #ddd;
   display: block;
 }
 
-.new-user-form.active,
 .receive.active {
   display: flex;
 }
@@ -355,7 +393,7 @@ tr[data-done="1"] {
 }
 .newBillForm.active {
   display: block;
-  background-color: #929496;
+  background-color: #dddddd8e;
 }
 .newBillForm .astrisk {
   right: 99%;
@@ -426,6 +464,10 @@ h1.calcs {
   top: -20px;
 }
 
+.spendingsForm {
+  background-color: #dddddd8e;
+}
+
 .spendingsForm .astrisk {
   right: 97%;
 }
@@ -477,6 +519,11 @@ tbody.data tr.infoData {
   font-weight: bold;
   height: 100px;
 }
+
+.monthsOptions .input-group {
+  width: 35%;
+}
+
 /* End Calcs Page */
 /* ==================== */
 /* ==================== */

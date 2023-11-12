@@ -21,19 +21,13 @@ if ($application == 'show') {
             </div>
         </div>
         <div class="card-body">
-            <div class="form-control text-center catAdd py-3 mb-3">
-                <div class="row gap-1 justify-content-center align-items-center">
-                    <div class="col-5 offset-1">
-                        <input type="text" class="z-3 form-control text-center" name="cat_name" required='required' autocomplete="off" placeholder="اسم القسم">
-                    </div>
-                    <div class="col-2">
-                        <span class="form-control btnAdd btn btn-primary">إضافة</span>
-                    </div>
-                    <div class="col-2">
-                        <span class="form-control btnEnd btn btn-danger">إنهاء</span>
-                    </div>
+            <from class="catAdd">
+                <div class="input-group w-50 mx-auto p-3">
+                    <input type="text" class="z-3 form-control text-center" name="cat_name" required='required' autocomplete="off" placeholder="اسم القسم">
+                    <button type="submit" class="btnAdd btn btn-primary">إضافة</button>
+                    <button type="button" class="btnEnd btn btn-danger">إغلاق</button>
                 </div>
-            </div>
+            </from>
             <div class="text-center alert alert-danger errorEmpty" style="display: none;">اسم القسم فارغ</div>
             <div class="text-center alert alert-danger error" style="display: none;">هذا القسم موجود بالفعل</div>
             <div class="text-center alert alert-success success" style="display: none;">تمت إضافة القسم بنجاح</div>
@@ -78,27 +72,11 @@ foreach ($rows as $row) {?>
             $cat = $stmt->fetch();?>
             <h1 class="text-center">تعديل القسم</h1>
             <form class="catEdit form-control text-center p-4" action="?application=update&catid=<?php echo $catid ?>" method="post">
-                <div class="row justify-content-center gap-4 mb-3">
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <label class="form-label">اسم القسم سابقا</label>
-                            </div>
-                            <div class="col">
-                                <h3>[ <?php echo $cat['cat_name'] ?> ]</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <label class="form-label mb-0">اسم القسم الجديد</label>
-                            </div>
-                            <div class="col position-relative">
-                                <input type="text" class="z-3 form-control text-center" name="cat_name" required='required' autocomplete="off" placeholder="الاسم الجديد للقسم">
-                            </div>
-                        </div>
-                    </div>
+                <div class="input-group w-75 mb-3 mx-auto">
+                    <span class="input-group-text">اسم القسم القديم</span>
+                    <span class="input-group-text"><h5><?php echo $cat['cat_name'] ?></h5></span>
+                    <span class="input-group-text">الاسم الجديد للقسم</span>
+                    <input type="text" class="z-3 form-control text-center" name="cat_name" required='required' autocomplete="off" placeholder="الاسم الجديد للقسم">
                 </div>
                 <div class="row gab-3 justify-content-center">
                     <div class="col-3">

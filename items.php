@@ -17,15 +17,14 @@ if ($application == 'show') {
         ?>
     <h1 class="text-center">المخزن</h1>
     <div class="card row mt-4">
-        <div class="card-header ps-4 pe-4 d-flex justify-content-between align-items-middle">
-            <div class="align-items-middle">
-                <h4 class="d-inline-block ms-n2">المخزن</h4>
-                <form class="d-inline-block align-items-middle" action="items.php?application=show" method="POST">
-                    <div class="row" style="flex-wrap: nowrap;">
-                        <div class="col-sm-4">
-                            <select class="form-control" name="cat" id="cat">
-                                <option value="0">برجاء اختيار القسم</option>
-                                <?php
+        <div class="card-header ps-4 pe-4 py-3 d-flex justify-content-between align-items-middle">
+                <h4 class="">المخزن</h4>
+                <form class="searchForm" action="items.php?application=show" method="POST">
+                    <div class="input-group">
+                        <span class="input-group-text">القسم</span>
+                        <select class="form-control" name="cat" id="cat">
+                            <option value="0">برجاء اختيار القسم</option>
+                            <?php
 $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         $stmt->execute();
         $cats = $stmt->fetchAll();
@@ -43,15 +42,14 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
             echo '</option>';
         }
         ?>
-                            </select>
-                        </div>
-                        <div class="col-sm-5">
-                            <select name="subcat" class="form-control" id="subcat">
-                                <option selected value="0">برجاء اختيار القسم أولا</option>
-                                <?php
-if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
+                        </select>
+                        <span class="input-group-text">القسم الفرعى</span>
+                        <select name="subcat" class="form-control" id="subcat">
                             <option selected value="0">برجاء اختيار القسم أولا</option>
-                            <?php } elseif (isset($selectedSubCat)) {
+                            <?php
+if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
+                        <option selected value="0">برجاء اختيار القسم أولا</option>
+                        <?php } elseif (isset($selectedSubCat)) {
             $stmt = $con->prepare("SELECT * FROM subcats WHERE del = 0 AND cat_id = ? ORDER BY subcat_name");
             $stmt->execute(array($selectedCat));
             $subcats = $stmt->fetchAll();
@@ -70,14 +68,10 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
             }
         }
         ?>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <input type="submit" class="btn btn-primary showOnSelection" value="عرض الأصناف">
-                        </div>
+                        </select>
+                        <input type="submit" class="btn btn-primary showOnSelection" value="عرض الأصناف">
                     </div>
                 </form>
-            </div>
             <div class="btns">
                 <span class="btn btn-primary showAll">عرض الكل</span>
                 <a class="text-decoration-none btn btn-primary" href="items.php?application=alert">إنذار نفاد صنف</a>
@@ -341,14 +335,12 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                 </div>
                 <div class="card-body">
                 <form class="form-control text-center quantity p-3" action="items.php?application=apply&way=quantity" method="POST">
-                    <div class="row ps-3 mb-3 align-items-center">
-                        <div class="col-1">
-                            <label class="form-label">الكود</label>
-                        </div>
-                        <div class="col">
-                        <select class="form-control text-center z-3" required = "required" name="code" id="code">
-                                <option value="0">الكود</option>
-                                <?php
+                    <div class="row">
+                        <div class="input-group">
+                            <span class="input-group-text">الكود</span>
+                            <select class="form-control text-center z-3" required = "required" name="code" id="code">
+                                    <option value="0">الكود</option>
+                                    <?php
 $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDER BY item_code");
         $stmt->execute();
         $codes = $stmt->fetchAll();
@@ -361,13 +353,9 @@ $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDE
             echo '</option>';
         }
         ?>
-                            </select>
-                        </div>
-                        <div class="col-1">
-                            <label class="form-label">القسم</label>
-                        </div>
-                        <div class="col">
-                        <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
+                                </select>
+                            <span class="input-group-text">القسم</span>
+                            <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
                                 <option value="0">برجاء اختيار القسم</option>
                                 <?php
 $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
@@ -388,12 +376,8 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         }
         ?>
                             </select>
-                        </div>
-                        <div class="col">
-                            <label class="form-label">القسم الفرعى</label>
-                        </div>
-                        <div class="col">
-                        <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
+                            <span class="input-group-text">القسم الفرعى</span>
+                            <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
                             <option selected value="0">برجاء اختيار القسم أولا</option>
                                 <?php
 if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
@@ -418,12 +402,8 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
         }
         ?>
                             </select>
-                        </div>
-                        <div class="col-1">
-                            <label class="form-label">الصنف</label>
-                        </div>
-                        <div class="col">
-                        <select name="item1" class="form-control text-center z-3" required = "required" id="item1">
+                            <span class="input-group-text">الصنف</span>
+                            <select name="item1" class="form-control text-center z-3" required = "required" id="item1">
                             <option selected value="0">برجاء اختيار القسم أولا</option>
                                 <?php
 if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
@@ -445,17 +425,11 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                             </select>
                         </div>
                     </div>
-                    <div class="row ps-3 mb-3 justify-content-center align-items-center">
-                        <div class="col-1">
-                            <label class="form-label">سعر الشراء</label>
-                        </div>
-                        <div class="col-2">
+                    <div class="row w-50 mx-auto my-3">
+                        <div class="input-group">
+                            <span class="input-group-text">سعر الشراء</span>
                             <input type="number" min="0" step="0.01" class="z-3 text-center form-control" name="item_purchase_price" required='required' autocomplete="off" placeholder="سعر الشراء">
-                        </div>
-                        <div class="col-1">
-                            <label class="form-label">الكمية</label>
-                        </div>
-                        <div class="col-2">
+                            <span class="input-group-text">الكمية</span>
                             <input type="number" min="1" class="z-3 text-center form-control" name="item_amount" required='required' autocomplete="off" placeholder="الكمية">
                         </div>
                     </div>
@@ -572,10 +546,10 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
             $beforeEdit = $items[0];
             ?>
             <h1 class="text-center">تعديل الصنف</h1>
-            <form class="form-control text-center p-3" action="?application=update&code=<?php echo $item_code ?>" method="post">
-                <div class="row justify-content-center mb-3">
-                    <div class="col-3 position-relative">
-                        <select class="form-control text-center z-3" name="cat" id="cat">
+            <form class="form-control text-center p-3 editItemForm" action="?application=update&code=<?php echo $item_code ?>" method="post">
+            <div class="input-group w-75 mx-auto mb-3">
+                <span class="input-group-text">القسم</span>
+                <select class="form-control text-center z-3" name="cat" id="cat">
                             <option value="0">برجاء اختيار القسم</option>
                             <?php
 $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
@@ -594,47 +568,37 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
             }
             ?>
                         </select>
-                    </div>
-                    <div class="col-3 position-relative">
+                        <span class="input-group-text">القسم الفرعى</span>
                         <select name="subcat" class="form-control text-center z-3" id="subcat"></select>
                     </div>
-                </div>
+                    <div class="input-group mb-3 mx-auto w-75">
                         <?php
 $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 AND cat_id = ? AND subcat_id = ? GROUP BY item_code ORDER BY item_name");
             $stmt->execute(array($items[0]['cat_id'], $items[0]['subcat_id']));
             $items2 = $stmt->fetchAll();
             ?>
-            <div class="row justify-content-center mb-3">
-                <div class="col-3 position-relative">
-                    <label class="form-label">اسم الصنف</label>
-                </div>
-                <div class="col-3 position-relative">
-                    <input type="text" min="0" class="form-control z-3 text-center" name="item1" autocomplete="off" placeholder="<?php echo $items[0]['item_name'] ?>">
-                </div>
+            <span class="input-group-text">اسم الصنف القديم</span>
+            <span class="input-group-text"><h5><?php echo $items[0]['item_name'] ?></h5></span>
+            <span class="input-group-text">اسم الصنف الجديد</span>
+            <input type="text" min="0" class="form-control z-3 text-center" name="item1" autocomplete="off" placeholder="يمكن تغييره إذا أردت">
             </div>
-            <div class="row justify-content-center mb-3">
-                <div class="col-3 position-relative">
-                    <label class="form-label">سعر الشراء</label>
-                </div>
-                <div class="col-3 position-relative">
-                    <input type="number" min="0" step="0.01" class="form-control z-3 text-center" name="price" autocomplete="off" placeholder="<?php echo $items[0]['purchase_price'] ?>">
-                </div>
+            <div class="input-group w-75 mx-auto mb-3">
+                <span class="input-group-text">اخر سعر</span>
+                <span class="input-group-text"><h5><?php echo $items[0]['purchase_price'] ?></h5></span>
+                <span class="input-group-text">السعر الجديد</span>
+                <input type="number" min="0" step="0.01" class="form-control z-3 text-center" name="price" autocomplete="off" placeholder="يمكن تغييره إذا أردت">
             </div>
-            <div class="row justify-content-center mb-3">
-                <div class="col-3 position-relative">
-                    <label class="form-label">آخر كمية تم إدخالها</label>
-                </div>
-                <div class="col-3 position-relative">
-                    <input type="number" min="0" class="z-3 form-control text-center" name="amount" autocomplete="off" placeholder="<?php echo $items[0]['amount'] ?>">
-                </div>
+            <div class="input-group w-75 mx-auto mb-3">
+                <span class="input-group-text">اخر كمية تم إدخالها</span>
+                <span class="input-group-text"><h5><?php echo $items[0]['amount'] ?></h5></span>
+                <span class="input-group-text">الكمية الصحيحة</span>
+                <input type="number" min="0" class="z-3 form-control text-center" name="amount" autocomplete="off" placeholder="يمكنك تعديله إذا أردت">
             </div>
-            <div class="row justify-content-center mb-3">
-                <div class="col-3 position-relative">
-                    <label class="form-label">أقل كمية</label>
-                </div>
-                <div class="col-3 position-relative">
-                    <input type="number" min="0" class="z-3 form-control text-center" name="leastamount" autocomplete="off" placeholder="<?php echo $items[0]['least_amount'] ?>">
-                </div>
+            <div class="input-group mx-auto w-75 mb-3">
+                <span class="input-group-text">أقل كمية مسموح بها</span>
+                <span class="input-group-text"><h5><?php echo $items[0]['least_amount'] ?></h5></span>
+                <span class="input-group-text">الكمية الأقل الجديدة المسموح بها</span>
+                <input type="number" min="0" class="z-3 form-control text-center" name="leastamount" autocomplete="off" placeholder="يمكنك تعديله إذا أردت">
             </div>
             <div class="row justify-content-center mb-3">
                 <div class="col-3 position-relative">

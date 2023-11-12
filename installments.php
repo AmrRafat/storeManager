@@ -25,8 +25,15 @@ if ($application == 'show') {
         </div>
         <div class="card-body start">
         <div class="errorMsg alert alert-danger text-center" style="display: none;">برجاء إكمال جميع الاختيارات</div>
-            <div class="input-group mb-4 mt-3 new-user-form">
-                <!-- <span style="position: absolute; top:-18px;right:-8px; cursor:pointer;"><i class="fa-regular fa-circle-xmark close-new-user btn btn-danger rounded-circle" style="padding: 7px; font-size: 20px; "></i></span> -->
+        <form action="#" class="form-control w-50 mx-auto new-user-form mb-3 py-3">
+            <div class="input-group">
+                <button type="button" class="btn-danger btn close-new-user">إغلاق</button>
+                <span class="input-group-text">الاسم</span>
+                <input type="text" name="user" placeholder="......" class="text-center form-control">
+                <button type="submit" class="btn btn-success submit-user-button">إضافة الاسم</button>
+            </div>
+        </form>
+            <!-- <div class="input-group mb-4 mt-3 new-user-form">
                 <div class="form form-control text-center p-3">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-1 close-new-user btn btn-danger">
@@ -45,16 +52,11 @@ if ($application == 'show') {
                         <div class="col-2">
                             <button class="submit-user-button btn btn-success" type="submit" >
                             إضافة الاسم
-                                <!-- <span style="position: absolute; top:-18px;left:-8px; cursor:pointer;"><i class="fa-regular fa-circle-check btn btn-success rounded-circle" style="padding: 7px; font-size: 20px; "></i></span> -->
                             </button>
                         </div>
                     </div>
-                    <!-- <div class="row justify-content-center pe-4 ps-4">
-                        <div class="col-5 pe-4 ps-4 mx-auto">
-                        </div>
-                    </div> -->
                 </div>
-            </div>
+            </div> -->
             <div class="showing-data">
                 <?php
 $currentDate = date('Y-m-d');
@@ -229,12 +231,13 @@ $stmt2 = $con->prepare("SELECT * FROM installments_money WHERE user_id = ? ORDER
                 echo $time['amount'];
                 echo '</td>';
                 echo '<td>';
-                echo '<span class="btn btn-primary editM ' . $time['id'] . '">تعديل المبلغ</span>';
+                echo '<span class="btn btn-primary editM ' . $time['id'] . '">تعديل</span>';
+                echo '<span class="btn btn-danger delM me-1" data-moneyid = " ' . $time['id'] . '">استرجاع</span>';
                 echo '</td>';
                 echo '</tr>';
                 echo '<tr class="editM" id="' . $time['id'] . '">';
                 echo '<td colspan="3">';?>
-                <div class="edit form-control justify-content-between">
+                <div class="edit form-control d-flex justify-content-between">
                             <span class="btn edit-money-close btn-danger text-center <?php echo $time['id'] ?>">إنهاء</span>
                             <input type="hidden" class="userID" value="<?php echo $_GET['userid'] ?>">
                             <input type="hidden" min="0" class="oldMoney" value="<?php echo $time['amount'] ?>">
