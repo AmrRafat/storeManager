@@ -21,6 +21,8 @@ user1
 user2
 111111
 
+إذا قمت باستخدام البرنامج خارج الموقع برجاء التأكد من ملف الاتصال بقاعدة البيانات واتباع الخطوات
+
 =====================================================================
 
 Welcome to Store Manager App
@@ -45,3 +47,5 @@ user1
 Seller account
 user2
 111111
+
+If you used the app away from the website, make sure to check connection file to the db and follow the steps

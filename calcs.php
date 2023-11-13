@@ -175,13 +175,13 @@ if (isset($_GET['selectedYear'])) {
                     <div class="col form-control">
                         <div class="row align-items-center">
                             <div class="col"><label class="form-label">إجمالى المصاريف</label></div>
-                            <div class="col"><label class="form-label"><?php echo $totalSpendings ?></label></div>
+                            <div class="col"><label class="form-label"><?php echo round($totalSpendings, 2) ?></label></div>
                         </div>
                     </div>
                     <div class="col form-control">
                         <div class="row align-items-center">
                             <div class="col"><label class="form-label">الربح</label></div>
-                            <div class="col"><label class="form-label"><?php echo $profit ?></label></div>
+                            <div class="col"><label class="form-label"><?php echo round($profit, 2) ?></label></div>
                         </div>
                     </div>
                 </div>
@@ -320,13 +320,13 @@ $lastDay = date('d', strtotime($lastDate));
                     <div class="col form-control">
                         <div class="row align-items-center">
                             <div class="col"><label class="form-label">إجمالى المصاريف</label></div>
-                            <div class="col"><label class="form-label"><?php echo $totalSpendings ?></label></div>
+                            <div class="col"><label class="form-label"><?php echo round($totalSpendings, 2) ?></label></div>
                         </div>
                     </div>
                     <div class="col form-control">
                         <div class="row align-items-center">
                             <div class="col"><label class="form-label">الربح</label></div>
-                            <div class="col"><label class="form-label"><?php echo $profit ?></label></div>
+                            <div class="col"><label class="form-label"><?php echo round($profit, 2) ?></label></div>
                         </div>
                     </div>
                 </div>
@@ -384,9 +384,9 @@ for ($i = 4; $i < 13; $i++) {
                     echo '<tr>';
                     echo '<td>' . $i . '</td>';
                     echo '<td>' . $totalSales . '</td>';
-                    echo '<td>' . $totalPurchase . '</td>';
-                    echo '<td>' . $spendings . '</td>';
-                    echo '<td>' . $dailyProfit . '</td>';
+                    echo '<td>' . round($totalPurchase, 2) . '</td>';
+                    echo '<td>' . round($spendings, 2) . '</td>';
+                    echo '<td>' . round($dailyProfit, 2) . '</td>';
                     echo '</tr>';
                 }
                 for ($i = 1; $i < 4; $i++) {

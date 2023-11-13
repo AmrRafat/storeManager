@@ -49,6 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="btn btn-primary btn-block" type="submit" value="دخول">
             </div>
         </div>
+        <div class="row text-center mt-3 text-light">
+            <h6>يرجى العلم أن البيانات الموجودة حاليا لا تمت للواقع بصلة وهى بغرض التجربة والتشغيل</h6>
+            <h6>للدخول كمستخدم صاحب محل (كامل الصلاحيات) استخدم user1 وكلمة مرور 111111</h6>
+            <h6>للدخول كمستخدم بائع (صلاحيات محدودة) استخدم user2 وكلمة مرور 111111</h6>
+        </div>
     </form>
 </div>
 
