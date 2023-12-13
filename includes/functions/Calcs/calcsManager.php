@@ -19,7 +19,7 @@ if (isset($_POST['app'])) {
         $stmt1 = $con->prepare("SELECT * FROM spendings ORDER BY date DESC");
         $stmt1->execute();
         $data = $stmt1->fetchAll();
-        echo '<table class="table table-striped">';
+        echo '<table class="table table-striped spendingsTable">';
         echo '<thead>';
         echo '<tr>';
         echo '<th>المصاريف</th>';
@@ -34,7 +34,7 @@ if (isset($_POST['app'])) {
             echo '<td>' . $info['spendingName'] . '</td>';
             echo '<td>' . $info['date'] . '</td>';
             echo '<td>' . $info['amount'] . '</td>';
-            echo '<td class="forth"><span class="btn btn-danger spendingDel">حذف</span></td>';
+            echo '<td class="forth"><span class="btn btn-danger spendingDel py-1">حذف</span></td>';
             echo '</tr>';
         }
         echo '</tbody>';
@@ -49,7 +49,7 @@ if (isset($_POST['app'])) {
         $stmt1 = $con->prepare("SELECT * FROM spendings ORDER BY date DESC");
         $stmt1->execute();
         $data = $stmt1->fetchAll();
-        echo '<table class="table table-striped">';
+        echo '<table class="table table-striped spendingsTable">';
         echo '<thead>';
         echo '<tr>';
         echo '<th>المصاريف</th>';
@@ -64,7 +64,7 @@ if (isset($_POST['app'])) {
             echo '<td>' . $info['spendingName'] . '</td>';
             echo '<td>' . $info['date'] . '</td>';
             echo '<td>' . $info['amount'] . '</td>';
-            echo '<td class="forth"><span class="btn btn-danger spendingDel">حذف</span></td>';
+            echo '<td class="forth"><span class="btn btn-danger spendingDel py-1">حذف</span></td>';
             echo '</tr>';
         }
         echo '</tbody>';

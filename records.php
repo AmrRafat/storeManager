@@ -15,22 +15,25 @@ if (isset($_SESSION['username'])) {
 if ($application == 'show') {
         ?>
     <h1 class="text-center">السجل</h1>
+    <div class="px-3 px-lg-0">
     <div class="card row mt-4">
-        <div class="card-header d-flex justify-content-between">
-            <h3>سجل يوم :
+        <div class="card-header">
+            <div class="row justify-content-center justify-content-md-between">
+            <h3 class="col-12 col-md-7 text-center text-md-end mb-3 mb-md-0">سجل يوم :
                 <?php
 echo $today;
         ?>
             </h3>
-            <div class="btns">
-                <span class="btn btn-primary new-record" style="cursor: pointer;">بيع جديد</span>
+            <div class="btns col-12 col-md-5 justify-content-center justify-content-md-end d-flex">
+                <span class="btn btn-primary new-record ms-3" style="cursor: pointer;">بيع جديد</span>
                 <a class="text-decoration-none btn btn-primary" href="records.php?application=old">عرض سجل قديم</a>
             </div>
+        </div>
         </div>
         <div class="card-body start">
             <form class="form-control py-2 mb-3 new-record-form">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">الكود</span>
                             <select class="form-control text-center z-3" required = "required" name="code" id="code">
@@ -51,7 +54,7 @@ $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDE
                             </select>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-md-6 mt-2 mt-md-0">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">القسم</span>
                             <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
@@ -77,7 +80,7 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
                             </select>
                         </div>
                     </div>
-                    <div class="col-6 mt-2">
+                    <div class="col-12 col-md-6 mt-2">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">القسم الفرعى</span>
                             <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
@@ -107,7 +110,7 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                             </select>
                         </div>
                     </div>
-                    <div class="col-6 mt-2">
+                    <div class="col-12 col-md-6 mt-2">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">الصنف</span>
                             <select name="item1" class="form-control text-center z-3" required = "required" id="item1">
@@ -132,25 +135,25 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                             </select>
                         </div>
                     </div>
-                    <div class="col-6 mt-2">
+                    <div class="col-12 col-md-6 mt-2">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">المتاح</span>
                             <input type="text" disabled class="z-3 ps-0 text-center avail form-control" name="avail" required='required' autocomplete="off" value="...">
                         </div>
                     </div>
-                    <div class="col-6 mt-2">
+                    <div class="col-12 col-md-6 mt-2">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">الكمية</span>
                             <input type="number" min="1" max="" class="z-3 ps-0 text-center amount form-control" name="selling_amount" required='required' autocomplete="off" placeholder="...">
                         </div>
                     </div>
-                    <div class="col-6 mt-2">
+                    <div class="col-12 col-md-6 mt-2">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">سعر القطعة</span>
                             <input type="number" min="0" step="0.01" class="z-3 ps-0 text-center form-control unit-price" name="unit_price" required='required' autocomplete="off" placeholder="...">
                         </div>
                     </div>
-                    <div class="col-6 mt-2">
+                    <div class="col-12 col-md-6 mt-2">
                         <div class="input-group">
                             <span class="input-group-text inputSpan justify-content-center">الإجمالى</span>
                             <input type="number" min="0" step="0.01" class="z-3 ps-0 total-price text-center form-control" name="total" required='required' autocomplete="off" placeholder="...">
@@ -159,10 +162,10 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                 </div>
                 <hr class="my-3">
                 <div class="row justify-content-center">
-                    <div class="col-2">
+                    <div class="col-5 col-md-2">
                         <button type="submit" class="btn btn-success form-control submit-button">تسجل البيع</button>
                     </div>
-                    <div class="col-2">
+                    <div class="col-5 col-md-2">
                         <button type="button" class="btn btn-danger form-control close-new-record">إغلاق</button>
                     </div>
                 </div>
@@ -193,8 +196,8 @@ $currentDate = date('Y-m-d');
             echo '<div class="text-center alert alert-info">لا يوجد أى سجلات لهذا اليوم</div>';
         } else {
             ?>
-            <table class="table table-striped text-center">
-                <tr>
+            <table class="table table-striped text-center recordsTableToday">
+                <tr class="align-middle">
                     <th>كود الصنف</th>
                     <th>اسم الصنف</th>
                     <th>القسم</th>
@@ -222,6 +225,7 @@ foreach ($rows as $row) {?>
             </div>
         </div>
         </div>
+        </div>
     <?php
 } elseif ($application = 'old') {
         ?>
@@ -231,20 +235,20 @@ foreach ($rows as $row) {?>
     <div class="card">
         <div class="card-header">
             <div class="text-center">
-                <div class="row">
-                    <div class="col-3">
+                <div class="row justify-content-center">
+                    <div class="col-6 col-md-3">
                         <div class="input-group">
                             <label for="from" class="col-form-label">من</label>
                             <input type="date" class="form-control me-3 text-center" name="from" id="from">
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6 col-md-3">
                         <div class="input-group">
                             <label for="to" class="col-form-label">إلى</label>
                             <input type="date" class="form-control me-3 text-center" name="to" id="to">
                         </div>
                     </div>
-                    <div class="col text-start">
+                    <div class="col-12 col-md-auto text-md-start text-center mt-3 mt-md-0">
                         <button class="old-logs btn btn-primary">عرض</button>
                         <button class="btn btn-primary"><a href="records.php?application=old" class="text-decoration-none text-reset">عرض الكل</a></button>
                         <button class="btn btn-primary"><a href="records.php" class="text-decoration-none text-reset">رجوع</a></button>
@@ -262,9 +266,9 @@ $stmt = $con->prepare("SELECT DISTINCT logs.*, items.item_name AS item_name, cat
         } else {
             $logs = $stmt->fetchAll();
             ?>
-            <table class="table table-striped">
+            <table class="table table-striped oldRecordsTable">
             <thead>
-                <tr>
+                <tr class="align-middle">
                     <th>الكود</th>
                     <th>الاسم</th>
                     <th>القسم</th>
@@ -273,7 +277,6 @@ $stmt = $con->prepare("SELECT DISTINCT logs.*, items.item_name AS item_name, cat
                     <th>الكمية</th>
                     <th>سعر القطعة</th>
                     <th>إجمالى السعر</th>
-                    <th>البائع</th>
                     <th></th>
                 </tr>
             </thead>
@@ -289,7 +292,6 @@ foreach ($logs as $log) {
                 echo '<td>' . $log['selling_amount'] . '</td>';
                 echo '<td>' . $log['unit_selling_price'] . '</td>';
                 echo '<td>' . $log['total_selling_price'] . '</td>';
-                echo '<td>' . $log['seller'] . '</td>';
                 echo '<td><span class="btn btn-primary return">استرجاع</span></td>';
                 echo '</tr>';
             }

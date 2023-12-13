@@ -27,7 +27,7 @@ if ($_POST['way'] == 'asc') {
         echo '<td>' . $row['adding_date'] . '</td>';
         echo '<td>' . $row['fullname'] . '</td>';
         echo '<td>';
-        echo '<span class="btn btn-success ms-2"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
+        echo '<span class="btn btn-success ms-lg-2 ms-0 mb-2 mb-lg-0"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
         echo '<span class="btn btn-danger"><a class="text-decoration-none text-reset" href="?application=del&subcatid=' . $row['subcat_id'] . '">حذف</a></span>';
         echo '</td>';
         echo '</tr>';
@@ -54,7 +54,7 @@ if ($_POST['way'] == 'asc') {
         echo '<td>' . $row['adding_date'] . '</td>';
         echo '<td>' . $row['fullname'] . '</td>';
         echo '<td>';
-        echo '<span class="btn btn-success ms-2"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
+        echo '<span class="btn btn-success ms-lg-2 ms-0 mb-2 mb-lg-0"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
         echo '<span class="btn btn-danger"><a class="text-decoration-none text-reset" href="?application=del&subcatid=' . $row['subcat_id'] . '">حذف</a></span>';
         echo '</td>';
         echo '</tr>';
@@ -81,7 +81,7 @@ if ($_POST['way'] == 'asc') {
         echo '<td>' . $row['adding_date'] . '</td>';
         echo '<td>' . $row['fullname'] . '</td>';
         echo '<td>';
-        echo '<span class="btn btn-success ms-2"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
+        echo '<span class="btn btn-success ms-lg-2 ms-0 mb-2 mb-lg-0"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
         echo '<span class="btn btn-danger"><a class="text-decoration-none text-reset" href="?application=del&subcatid=' . $row['subcat_id'] . '">حذف</a></span>';
         echo '</td>';
         echo '</tr>';
@@ -108,7 +108,7 @@ if ($_POST['way'] == 'asc') {
         echo '<td>' . $row['adding_date'] . '</td>';
         echo '<td>' . $row['fullname'] . '</td>';
         echo '<td>';
-        echo '<span class="btn btn-success ms-2"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
+        echo '<span class="btn btn-success ms-lg-2 ms-0 mb-2 mb-lg-0"><a class="text-decoration-none text-reset" href="?application=edit&subcatid=' . $row['subcat_id'] . '">تعديل</a></span>';
         echo '<span class="btn btn-danger"><a class="text-decoration-none text-reset" href="?application=del&subcatid=' . $row['subcat_id'] . '">حذف</a></span>';
         echo '</td>';
         echo '</tr>';

@@ -22,7 +22,7 @@ if ($application == 'show') {
             <div class="success alert alert-success text-center">تم إضافة الفاتورة</div>
             <div class="successDel alert alert-success text-center">تم مسح الفاتورة</div>
             <form class="newBillForm p-3 form-control mb-3">
-                <div class="input-group mx-auto w-75">
+                <div class="input-group mx-auto w-100 flex-column flex-lg-row align-items-center">
                     <span class="input-group-text">تاريخ الفاتورة</span>
                     <input type="date" name="billDate" id="date" class="form-control" required="required">
                     <span class="input-group-text">اسم البائع</span>
@@ -32,37 +32,6 @@ if ($application == 'show') {
                     <button type="submit" class="btn btn-success newBillBtn">إضافة</button>
                     <button type="button" class="btn btn-danger endNewBill">إغلاق</button>
                 </div>
-                <!-- <div class="row justify-content-center align-items-center">
-                    <div class="col text-center">
-                        <label class="form-label">
-                            تاريخ الفاتورة
-                        </label>
-                    </div>
-                    <div class="col position-relative">
-                    </div>
-                    <div class="col text-center">
-                        <label class="form-label">
-                            اسم البائع
-                        </label>
-                    </div>
-                    <div class="col-3 position-relative">
-                    </div>
-                    <div class="col text-center">
-                        <label class="form-label">
-                            إجمالى الفاتورة
-                        </label>
-                    </div>
-                    <div class="col-2 position-relative">
-                    </div>
-                    <div class="col">
-                        <div class="row gap-1 justify-content-center">
-                            <div class="col">
-                            </div>
-                            <div class="col">
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </form>
             <div class="dataShow form-control">
                 <?php
@@ -76,20 +45,20 @@ $stmt = $con->prepare("SELECT * FROM bills ORDER BY date DESC");
         }
         if (isset($data)) {?>
         <div class="row text-center mb-2">
-            <div class="col-2 fw-bold">تاريخ الفاتورة</div>
-            <div class="col-4 fw-bold">اسم البائع</div>
-            <div class="col-2 fw-bold">إجمالى الفاتورة</div>
-            <div class="col-4"></div>
+            <div class="px-1 col-3 col-lg-2 fw-bold">تاريخ الفاتورة</div>
+            <div class="px-1 col-4 fw-bold">اسم البائع</div>
+            <div class="px-1 col-2 fw-bold">إجمالى الفاتورة</div>
+            <div class="px-1 col-3 col-lg-4"></div>
         </div>
         <hr>
         <div class="dataInfo">
             <?php
 foreach ($data as $info) {
             echo '<div class="row text-center data align-items-center py-2" data-log="' . $info['bill_id'] . '">';
-            echo '<div class="col-2">' . $info['date'] . '</div>';
-            echo '<div class="col-4">' . $info['seller'] . '</div>';
-            echo '<div class="col-2">' . $info['amount'] . '</div>';
-            echo '<div class="col-4 delCol">';
+            echo '<div class="px-1 col-3 col-lg-2">' . $info['date'] . '</div>';
+            echo '<div class="px-1 col-4">' . $info['seller'] . '</div>';
+            echo '<div class="px-1 col-2">' . $info['amount'] . '</div>';
+            echo '<div class="px-1 col-3 col-lg-4 delCol">';
             echo '<span class="btn btn-danger delBill">حذف</span>';
             echo '</div>';
             echo '</div>';

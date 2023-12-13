@@ -19,19 +19,19 @@ if ($_POST['no'] == 1) {
     $stmt1->execute();
     $data = $stmt1->fetchAll();
     echo '<div class="row text-center mb-2">';
-    echo '<div class="col-2 fw-bold">تاريخ الفاتورة</div>';
-    echo '<div class="col-4 fw-bold">اسم البائع</div>';
-    echo '<div class="col-2 fw-bold">إجمالى الفاتورة</div>';
-    echo '<div class="col-4"></div>';
+    echo '<div class="px-1 col-3 col-lg-2 fw-bold">تاريخ الفاتورة</div>';
+    echo '<div class="px-1 col-4 fw-bold">اسم البائع</div>';
+    echo '<div class="px-1 col-2 fw-bold">إجمالى الفاتورة</div>';
+    echo '<div class="px-1 col-3 col-lg-4"></div>';
     echo '</div>';
     echo '<hr>';
     echo '<div class="dataInfo">';
     foreach ($data as $info) {
         echo '<div class="row text-center data align-items-center py-2" data-log="' . $info['bill_id'] . '">';
-        echo '<div class="col-2">' . $info['date'] . '</div>';
-        echo '<div class="col-4">' . $info['seller'] . '</div>';
-        echo '<div class="col-2">' . $info['amount'] . '</div>';
-        echo '<div class="col-4 delCol">';
+        echo '<div class="px-1 col-3 col-lg-2">' . $info['date'] . '</div>';
+        echo '<div class="px-1 col-4">' . $info['seller'] . '</div>';
+        echo '<div class="px-1 col-2">' . $info['amount'] . '</div>';
+        echo '<div class="px-1 col-3 col-lg-4 delCol">';
         echo '<span class="btn btn-danger delBill">حذف</span>';
         echo '</div>';
         echo '</div>';
@@ -56,19 +56,19 @@ if ($_POST['no'] == 1) {
     }
     if (isset($data)) {
         echo '<div class="row text-center mb-2">';
-        echo '<div class="col-2 fw-bold">تاريخ الفاتورة</div>';
-        echo '<div class="col-4 fw-bold">اسم البائع</div>';
-        echo '<div class="col-2 fw-bold">إجمالى الفاتورة</div>';
-        echo '<div class="col-4"></div>';
+        echo '<div class="px-1 col-3 col-lg-2 fw-bold">تاريخ الفاتورة</div>';
+        echo '<div class="px-1 col-4 fw-bold">اسم البائع</div>';
+        echo '<div class="px-1 col-2 fw-bold">إجمالى الفاتورة</div>';
+        echo '<div class="px-1 col-3 col-lg-4"></div>';
         echo '</div>';
         echo '<hr>';
         echo '<div class="dataInfo">';
         foreach ($data as $info) {
             echo '<div class="row text-center data align-items-center py-2" data-log="' . $info['bill_id'] . '">';
-            echo '<div class="col-2">' . $info['date'] . '</div>';
-            echo '<div class="col-4">' . $info['seller'] . '</div>';
-            echo '<div class="col-2">' . $info['amount'] . '</div>';
-            echo '<div class="col-4 delCol">';
+            echo '<div class="px-1 col-3 col-lg-2">' . $info['date'] . '</div>';
+            echo '<div class="px-1 col-4">' . $info['seller'] . '</div>';
+            echo '<div class="px-1 col-2">' . $info['amount'] . '</div>';
+            echo '<div class="px-1 col-3 col-lg-4 delCol">';
             echo '<span class="btn btn-danger delBill">حذف</span>';
             echo '</div>';
             echo '</div>';

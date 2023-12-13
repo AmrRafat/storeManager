@@ -17,16 +17,14 @@ if ($way == 'codeASC') {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes codeASC ">كود الصنف</th>
-                    <th class="names ">اسم الصنف</th>
-                    <th class="cats ">اسم القسم</th>
-                    <th class="subcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes codeASC ">الكود</th>
+                    <th class="px-1 names ">اسم الصنف</th>
+                    <th class="px-1 cats ">اسم القسم</th>
+                    <th class="px-1 subcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -43,18 +41,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -71,16 +67,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes codeDESC ">كود الصنف</th>
-                    <th class="names ">اسم الصنف</th>
-                    <th class="cats ">اسم القسم</th>
-                    <th class="subcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes codeDESC ">الكود</th>
+                    <th class="px-1 names ">اسم الصنف</th>
+                    <th class="px-1 cats ">اسم القسم</th>
+                    <th class="px-1 subcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -97,18 +91,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -125,16 +117,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes ">كود الصنف</th>
-                    <th class="names nameASC ">اسم الصنف</th>
-                    <th class="cats ">اسم القسم</th>
-                    <th class="subcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes ">الكود</th>
+                    <th class="px-1 names nameASC ">اسم الصنف</th>
+                    <th class="px-1 cats ">اسم القسم</th>
+                    <th class="px-1 subcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -151,18 +141,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -179,16 +167,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes ">كود الصنف</th>
-                    <th class="names nameDESC ">اسم الصنف</th>
-                    <th class="cats ">اسم القسم</th>
-                    <th class="subcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes ">الكود</th>
+                    <th class="px-1 names nameDESC ">اسم الصنف</th>
+                    <th class="px-1 cats ">اسم القسم</th>
+                    <th class="px-1 subcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -205,18 +191,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -233,16 +217,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes ">كود الصنف</th>
-                    <th class="names ">اسم الصنف</th>
-                    <th class="cats catASC ">اسم القسم</th>
-                    <th class="subcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes ">الكود</th>
+                    <th class="px-1 names ">اسم الصنف</th>
+                    <th class="px-1 cats catASC ">اسم القسم</th>
+                    <th class="px-1 subcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -259,18 +241,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -287,16 +267,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes ">كود الصنف</th>
-                    <th class="names ">اسم الصنف</th>
-                    <th class="cats catDESC ">اسم القسم</th>
-                    <th class="subcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes ">الكود</th>
+                    <th class="px-1 names ">اسم الصنف</th>
+                    <th class="px-1 cats catDESC ">اسم القسم</th>
+                    <th class="px-1 subcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -313,18 +291,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -341,16 +317,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes ">كود الصنف</th>
-                    <th class="names ">اسم الصنف</th>
-                    <th class="cats ">اسم القسم</th>
-                    <th class="subcats subcatASC ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes ">الكود</th>
+                    <th class="px-1 names ">اسم الصنف</th>
+                    <th class="px-1 cats ">اسم القسم</th>
+                    <th class="px-1 subcats subcatASC ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -367,18 +341,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -395,16 +367,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center">
-                <tr>
-                    <th class="codes ">كود الصنف</th>
-                    <th class="names ">اسم الصنف</th>
-                    <th class="cats ">اسم القسم</th>
-                    <th class="subcats subcatDESC ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 codes ">الكود</th>
+                    <th class="px-1 names ">اسم الصنف</th>
+                    <th class="px-1 cats ">اسم القسم</th>
+                    <th class="px-1 subcats subcatDESC ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -421,18 +391,16 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Cats'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Cats'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -451,15 +419,13 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center" data-cat='<?php echo $catCode ?>'>
-                <tr>
-                    <th class="catcodes codeASC ">كود الصنف</th>
-                    <th class="catnames ">اسم الصنف</th>
-                    <th class="catsubcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 catcodes codeASC ">الكود</th>
+                    <th class="px-1 catnames ">اسم الصنف</th>
+                    <th class="px-1 catsubcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -476,17 +442,15 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -505,15 +469,13 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center" data-cat='<?php echo $catCode ?>'>
-                <tr>
-                    <th class="catcodes codeDESC ">كود الصنف</th>
-                    <th class="catnames ">اسم الصنف</th>
-                    <th class="catsubcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 catcodes codeDESC ">الكود</th>
+                    <th class="px-1 catnames ">اسم الصنف</th>
+                    <th class="px-1 catsubcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -530,17 +492,15 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -559,15 +519,13 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center" data-cat='<?php echo $catCode ?>'>
-                <tr>
-                    <th class="catcodes ">كود الصنف</th>
-                    <th class="catnames nameASC">اسم الصنف</th>
-                    <th class="catsubcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 catcodes ">الكود</th>
+                    <th class="px-1 catnames nameASC">اسم الصنف</th>
+                    <th class="px-1 catsubcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -584,17 +542,15 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -613,15 +569,13 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center" data-cat='<?php echo $catCode ?>'>
-                <tr>
-                    <th class="catcodes">كود الصنف</th>
-                    <th class="catnames nameDESC">اسم الصنف</th>
-                    <th class="catsubcats ">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 catcodes">الكود</th>
+                    <th class="px-1 catnames nameDESC">اسم الصنف</th>
+                    <th class="px-1 catsubcats ">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -638,17 +592,15 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -667,15 +619,13 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center" data-cat='<?php echo $catCode ?>'>
-                <tr>
-                    <th class="catcodes ">كود الصنف</th>
-                    <th class="catnames">اسم الصنف</th>
-                    <th class="catsubcats subcatASC">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
+                <tr class="align-middle">
+                    <th class="px-1 catcodes ">الكود</th>
+                    <th class="px-1 catnames">اسم الصنف</th>
+                    <th class="px-1 catsubcats subcatASC">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -692,17 +642,15 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -721,16 +669,14 @@ foreach ($rows as $row) {
     } else {
         ?>
             <table class="table table-striped text-center" data-cat='<?php echo $catCode ?>'>
-                <tr>
-                    <th class="catcodes">كود الصنف</th>
-                    <th class="catnames">اسم الصنف</th>
-                    <th class="catsubcats subcatDESC">اسم القسم الفرعى</th>
-                    <th>تاريخ الشراء</th>
-                    <th>سعر الشراء</th>
-                    <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
-                    <th>التحكم</th>
+                <tr class="align-middle">
+                    <th class="px-1 catcodes">الكود</th>
+                    <th class="px-1 catnames">اسم الصنف</th>
+                    <th class="px-1 catsubcats subcatDESC">القسم الفرعى</th>
+                    <th class="px-1 ">تاريخ الشراء</th>
+                    <th class="px-1 ">سعر الشراء</th>
+                    <th class="px-1 ">المتاح</th>
+                    <th>التحكم</th></th>
                 </tr>
                 <?php
 foreach ($rows as $row) {
@@ -746,17 +692,15 @@ foreach ($rows as $row) {
             $info = $allInfo[0];
             ?>
                     <tr class="align-middle">
-                    <td><?php echo $row['item_code'] ?></td>
-                    <td><?php echo $row['item_name'] ?></td>
-                    <td><?php echo $row['Subcats'] ?></td>
-                    <td><?php echo $info['adding_date'] ?></td>
-                    <td><?php echo $info['purchase_price'] ?></td>
-                    <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
-                    <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                    <td class="px-1"><?php echo $row['item_code'] ?></td>
+                    <td class="px-1"><?php echo $row['item_name'] ?></td>
+                    <td class="px-1"><?php echo $row['Subcats'] ?></td>
+                    <td class="px-1"><?php echo $info['adding_date'] ?></td>
+                    <td class="px-1"><?php echo $info['purchase_price'] ?></td>
+                    <td class="px-1"><?php echo $availableAmount ?></td>
+                    <td class="px-1">
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-1 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>

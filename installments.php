@@ -25,7 +25,7 @@ if ($application == 'show') {
         </div>
         <div class="card-body start">
         <div class="errorMsg alert alert-danger text-center" style="display: none;">برجاء إكمال جميع الاختيارات</div>
-        <form action="#" class="form-control w-50 mx-auto new-user-form mb-3 py-3">
+        <form action="#" class="form-control w-100 mx-auto new-user-form mb-3 py-3">
             <div class="input-group">
                 <button type="button" class="btn-danger btn close-new-user">إغلاق</button>
                 <span class="input-group-text">الاسم</span>
@@ -33,30 +33,6 @@ if ($application == 'show') {
                 <button type="submit" class="btn btn-success submit-user-button">إضافة الاسم</button>
             </div>
         </form>
-            <!-- <div class="input-group mb-4 mt-3 new-user-form">
-                <div class="form form-control text-center p-3">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-1 close-new-user btn btn-danger">
-                            إنهاء
-                        </div>
-                        <div class="col-5 px-4">
-                            <div class="row align-items-center">
-                                <div class="col-4">
-                                    <label class="label-form">الاسم</label>
-                                </div>
-                                <div class="col-8">
-                                    <input type="text" class="z-3 ps-0 text-center form-control" name="user" required='required' autocomplete="off" placeholder="الاسم">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <button class="submit-user-button btn btn-success" type="submit" >
-                            إضافة الاسم
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="showing-data">
                 <?php
 $currentDate = date('Y-m-d');
@@ -73,7 +49,7 @@ $currentDate = date('Y-m-d');
 foreach ($rows as $row) {?>
     <a href="?application=info&userid=<?php echo $row['user_id'] ?>" class="col text-center instaName rounded-4 text-decoration-none btn btn-primary">
     <div>
-        <h3><?php echo $row['username'] ?></h3>
+        <h3 class=""><?php echo $row['username'] ?></h3>
         <span>المتبقى: <?php echo $row['remain'] ?></span>
     </div>
     </a>
@@ -112,22 +88,22 @@ foreach ($rows as $row) {?>
     <div class="card-header">
         <div class="row">
             <div class="col text-center">
-                <label for="total" class="form-label">الإجمالى</label>
+                <label for="total" class="form-label insta-labels">الإجمالى</label>
                 <input type="text" class="form-control text-center" id="total" value="<?php echo $data['total'] ?>" readonly>
             </div>
             <div class="col text-center">
-                <label for="done" class="form-label">الذى تم استلامه</label>
+                <label for="done" class="form-label insta-labels">الذى تم استلامه</label>
                 <input type="text" class="form-control text-center" id="done" value="<?php echo $data['done'] ?>" readonly>
             </div>
             <div class="col text-center">
-                <label for="remain" class="form-label">المتبقى</label>
+                <label for="remain" class="form-label insta-labels">المتبقى</label>
                 <input type="text" class="form-control text-center" id="remain" value="<?php echo $data['remain'] ?>" readonly>
             </div>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body instaInfoCards">
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-md-8">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="my-0">
@@ -187,7 +163,7 @@ $stmt1 = $con->prepare("SELECT DISTINCT installments_items.*, items.item_name AS
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="my-0">
@@ -273,14 +249,14 @@ echo '</td>';
         ?>
     <h1 class="text-center">إضافة صنف بالتقسيط</h1>
     <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between">
-            <h3>إضافة صنف بالتقسيط إلى: <?php echo $user['username'] ?></h3>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="fs-5 fs-md-3">إضافة صنف بالتقسيط إلى: <?php echo $user['username'] ?></h3>
             <a href="?application=info&userid=<?php echo $userID ?>" class="btn btn-primary text-decoration-none">رجوع</a>
         </div>
         <div class="card-body instaItem">
             <form class="newItemAdd">
-                <div class="row mb-3">
-                    <div class="col">
+                <div class="row mb-md-3 mb-2">
+                    <div class="col-12 col-md">
                     <select class="form-control text-center z-3" required = "required" name="code" id="code">
                                 <option value="0">الكود</option>
                                 <?php
@@ -298,7 +274,7 @@ $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDE
         ?>
                             </select>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-md mt-2 mt-md-0">
                     <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
                                 <option value="0">القسم</option>
                                 <?php
@@ -321,7 +297,7 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         ?>
                             </select>
                         </div>
-                    <div class="col">
+                    <div class="col-12 col-md mt-2 mt-md-0">
                     <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
                             <option selected value="0">برجاء اختيار القسم أولا</option>
                                 <?php
@@ -348,7 +324,7 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
         ?>
                             </select>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-md mt-2 mt-md-0">
                     <select name="item1" class="form-control text-center z-3" required = "required" id="item1">
                             <option selected value="0">برجاء اختيار القسم أولا</option>
                                 <?php
@@ -371,8 +347,8 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                             </select>
                     </div>
                 </div>
-                <div class="row mb-3 gap-4 px-2">
-                    <div class="col form-control">
+                <div class="row mb-md-3 mb-2 gap-2 gap-md-4 px-2">
+                    <div class="col-12 col-md form-control">
                         <div class="row">
                             <div class="col-6 text-center">
                                 <label class="form-label">المتاح</label>
@@ -382,7 +358,7 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                                 </div>
                             </div>
                         </div>
-                        <div class="col form-control">
+                        <div class="col-12 col-md form-control">
                             <div class="row">
                                 <div class="col text-center">
                                     <label class="form-label">الكمية</label>
@@ -393,8 +369,8 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                             </div>
                         </div>
                 </div>
-                <div class="row mb-3 gap-4 px-2">
-                    <div class="col form-control">
+                <div class="row mb-md-3 mb-2 gap-2 gap-md-4 px-2">
+                    <div class="col-12 col-md form-control">
                         <div class="row">
                             <div class="col text-center">
                                 <label class="form-label">سعر القطعة</label>
@@ -404,7 +380,7 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                             </div>
                         </div>
                     </div>
-                    <div class="col form-control">
+                    <div class="col-12 col-md form-control">
                         <div class="row">
                             <div class="col text-center">
                                 <label class="form-label">الإجمالى</label>
@@ -415,8 +391,8 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3 gap-4 px-2">
-                    <div class="col form-control">
+                <div class="row mb-3 gap-2 gap-md-4 px-2">
+                    <div class="col-12 col-md form-control">
                         <div class="row">
                             <div class="col text-center">
                                 <label class="form-label">سعر القطعة بالتقسيط</label>
@@ -426,7 +402,7 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                             </div>
                         </div>
                     </div>
-                    <div class="col form-control">
+                    <div class="col-12 col-md form-control">
                         <div class="row">
                             <div class="col text-center">
                                 <label class="form-label">الإجمالى بالتقسيط</label>

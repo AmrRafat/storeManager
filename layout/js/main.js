@@ -785,10 +785,22 @@ $(function () {
         $(".successMsg").attr("style", "display:none;");
         $(".start form input").not(".avail").val("");
         $(".avail").val("المتاح");
-        $(".start form select#code, .start form select#cat").val(0);
-        $(".start form select#subcat, .start form select#item1").empty();
+        $(".start form select#code").val(0);
+        $(".start form select#cat").val(cat);
+        $(".start form select#subcat").empty();
+        $.ajax({
+          type: "POST",
+          url: "includes/functions/General/catSubcatControl.php",
+          data: {
+            catid: cat,
+          },
+          success: function (html1) {
+            $(".start form select#subcat").html(html1);
+          },
+        });
+        $(".start form select#item1").empty();
         $(".start form select#subcat, .start form select#item1").append(
-          '<option selected value="0">برجاء اختيار القسم أولا</option>'
+          '<option selected value="0">برجاء اختيار القسم الفرعى أولا</option>'
         );
         $(".start form select, .start form input").blur();
       }, 1000);

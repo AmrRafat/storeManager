@@ -41,7 +41,7 @@ if ($count > 0) {
             echo $row['fullname'];
             echo '</td>';
             echo '<td>';
-            echo '<span class="btn btn-success ms-2"><a class="text-decoration-none text-reset" href="?application=edit&catid=';
+            echo '<span class="btn btn-success ms-0 ms-lg-2 mb-2 mb-lg-0"><a class="text-decoration-none text-reset" href="?application=edit&catid=';
             echo $row['cat_id'];
             echo '">تعديل</a></span>';
             echo '<span class="btn btn-danger"><a class="text-decoration-none text-reset" href="?application=del&catid=';

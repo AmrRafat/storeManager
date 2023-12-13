@@ -4,7 +4,7 @@ $host = 'localhost'; //mysql host name
 $user = 'root'; //mysql username
 $pass = ''; //mysql password
 $db = ''; //mysql database
-$port = ****; //mysql port number
+$port = '****'; //mysql port number
 $dsn = "mysql:host=$host;dbname=$db;port=$port;charset=UTF8";
 
 try {
@@ -14,6 +14,5 @@ try {
 } catch (PDOException $e) {
     echo 'Failed to connect ' . $e->getMessage();
 }
-
 
 // Please, import the db from the file called 'store.sql'

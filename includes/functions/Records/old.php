@@ -12,7 +12,7 @@ if ($_POST['no'] == 1) {
         if ($count > 0) {
             $logs = $stmt->fetchAll();
             ?>
-        <table class="table table-stripped">
+        <table class="table table-stripped oldRecordsTable">
         <thead>
             <tr>
                 <th>الكود</th>
@@ -23,7 +23,6 @@ if ($_POST['no'] == 1) {
                 <th>الكمية</th>
                 <th>سعر القطعة</th>
                 <th>إجمالى السعر</th>
-                <th>البائع</th>
                 <th></th>
             </tr>
         </thead>
@@ -39,7 +38,6 @@ foreach ($logs as $log) {
                 echo '<td>' . $log['selling_amount'] . '</td>';
                 echo '<td>' . $log['unit_selling_price'] . '</td>';
                 echo '<td>' . $log['total_selling_price'] . '</td>';
-                echo '<td>' . $log['seller'] . '</td>';
                 echo '<td><span class="btn btn-primary return">استرجاع</span></td>';
                 echo '</tr>';
             }
@@ -87,7 +85,7 @@ foreach ($logs as $log) {
     } else {
         $logs = $stmt->fetchAll();
         ?>
-            <table class="table table-striped">
+            <table class="table table-striped oldRecordsTable">
             <thead>
                 <tr>
                     <th>الكود</th>
@@ -98,7 +96,7 @@ foreach ($logs as $log) {
                     <th>الكمية</th>
                     <th>سعر القطعة</th>
                     <th>إجمالى السعر</th>
-                    <th>البائع</th>
+
                     <th></th>
                 </tr>
             </thead>
@@ -114,7 +112,6 @@ foreach ($logs as $log) {
             echo '<td>' . $log['selling_amount'] . '</td>';
             echo '<td>' . $log['unit_selling_price'] . '</td>';
             echo '<td>' . $log['total_selling_price'] . '</td>';
-            echo '<td>' . $log['seller'] . '</td>';
             echo '<td><span class="btn btn-primary return">استرجاع</span></td>';
             echo '</tr>';
         }
@@ -172,18 +169,21 @@ foreach ($logs as $log) {
         echo '<div class="text-center alert alert-info">لا يوجد أى سجلات لهذا اليوم</div>';
     } else {
         ?>
-            <table class="table table-striped text-center">
-                <tr>
-                    <th>كود الصنف</th>
-                    <th>اسم الصنف</th>
-                    <th>القسم</th>
-                    <th>القسم الفرعى</th>
-                    <th>العدد المباع</th>
-                    <th>سعر القطعة</th>
-                    <th>إجمالى السعر</th>
-                    <th></th>
-                </tr>
-                <?php
+            <table class="table table-striped oldRecordsTable">
+                <thead>
+                    <tr class="align-middle">
+                        <th>الكود</th>
+                        <th>الاسم</th>
+                        <th>القسم</th>
+                        <th>القسم الفرعى</th>
+                        <th>الكمية</th>
+                        <th>سعر القطعة</th>
+                        <th>إجمالى السعر</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 foreach ($rows as $row) {?>
                     <tr class="align-middle" data-id=<?php echo $row['log_id'] ?>>
                         <td><?php echo $row['item_code'] ?></td>
@@ -196,6 +196,7 @@ foreach ($rows as $row) {?>
                         <td><span class="btn btn-primary returnItem">استرجاع</span></td>
                     </tr>
                     <?php }?>
+                </tbody>
                 </table>
             <?php
 }

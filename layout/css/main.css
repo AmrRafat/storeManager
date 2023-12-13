@@ -12,6 +12,13 @@ body {
   padding-bottom: 40px;
 }
 
+@media (max-width: 767px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+}
+
 .astrisk {
   position: absolute;
   right: 50%;
@@ -26,7 +33,7 @@ body {
 }
 
 h5,
-label.form-label {
+label.form-label:not(.insta-labels) {
   margin-bottom: 0 !important;
 }
 
@@ -44,6 +51,12 @@ div.login-bg {
   right: 50%;
   top: 50%;
   transform: translate(50%, -50%);
+}
+
+@media (max-width: 1023px) {
+  .login {
+    width: 90%;
+  }
 }
 
 .login input {
@@ -145,6 +158,26 @@ form.userAdd input[type="submit"] {
   height: 6rem;
 }
 
+@media (max-width: 991px) {
+  form.userAdd input[type="submit"] {
+    height: auto;
+  }
+  .edit-app-user span,
+  .edit-app-user input,
+  .edit-app-user .input-group select {
+    width: 100% !important;
+  }
+  .edit-app-user .input-group span:first-of-type {
+    border-top-left-radius: var(--bs-border-radius) !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .edit-app-user .input-group input,
+  .edit-app-user .input-group select {
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+    border-top-left-radius: 0 !important;
+  }
+}
+
 /* End User Page */
 /* ==================== */
 /* Start Cats Page */
@@ -165,8 +198,44 @@ form.userAdd input[type="submit"] {
   right: 100%;
 }
 
-.catEdit .astrisk {
-  right: 97%;
+@media (max-width: 767px) {
+  .catEdit .input-group {
+    width: 100% !important;
+  }
+  .catEdit .input-group span:first-of-type {
+    border-bottom-right-radius: 0 !important;
+    width: 50% !important;
+  }
+  .catEdit .input-group span:nth-of-type(2) {
+    border-top-left-radius: var(--bs-border-radius) !important;
+    width: 50% !important;
+  }
+  .catEdit .input-group span:nth-of-type(3) {
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+    width: 50% !important;
+  }
+  .catEdit .input-group input:last-of-type {
+    border-top-left-radius: 0 !important;
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 365px) {
+  .catEdit .input-group span,
+  .catEdit .input-group span:nth-of-type(2) h5 {
+    font-size: small;
+  }
+  .catEdit .input-group:not(:last-of-type) span,
+  .catEdit .input-group:not(:last-of-type) input {
+    padding-right: 10px !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .catEdit .input-group {
+    width: 100% !important;
+  }
 }
 /* End Cats Page */
 /* ==================== */
@@ -181,6 +250,25 @@ form.userAdd input[type="submit"] {
 
 .newSubcatForm .col-3 .astrisk {
   right: 98%;
+}
+
+@media (max-width: 991px) {
+  .newSubcatForm input,
+  .newSubcatForm select,
+  .newSubcatForm span {
+    width: 100% !important;
+  }
+  .newSubcatForm span {
+    justify-content: center !important;
+  }
+  .newSubcatForm span:first-of-type {
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: var(--bs-border-radius) !important;
+  }
+  .newSubcatForm button:last-of-type {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+  }
 }
 
 .subCat,
@@ -213,6 +301,13 @@ form.userAdd input[type="submit"] {
 .editSubcatlabel {
   width: 192px;
 }
+
+@media (min-width: 991px) {
+  .editSubCat .input-group {
+    width: 75% !important;
+  }
+}
+
 /* End Subcats Page */
 /* ==================== */
 /* Start Items Page */
@@ -221,16 +316,37 @@ form.quantity {
   background-color: #b6b6b6;
 }
 
-.searchForm {
-  width: 660px;
+@media (min-width: 992px) {
+  .searchForm select:first-of-type {
+    width: 140px !important;
+  }
+
+  .searchForm select:nth-of-type(2) {
+    width: 170px !important;
+  }
 }
 
-.searchForm select:first-of-type {
-  width: 140px !important;
-}
-
-.searchForm select:nth-of-type(2) {
-  width: 170px !important;
+@media (max-width: 991px) {
+  .searchForm span,
+  .searchForm select,
+  .searchForm input {
+    width: 100% !important;
+    justify-content: center;
+    text-align: center;
+  }
+  .searchForm span:first-of-type {
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: var(--bs-border-radius) !important;
+  }
+  .searchForm input:last-of-type {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+  }
+  .itemsTable2 th,
+  .itemsTable2 td {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 form.quantity .astrisk {
@@ -301,6 +417,108 @@ form.quantity span.input-group-text {
 .editItemForm #cat {
   width: 56.5px;
 }
+
+.addItemForm span {
+  min-width: 115px;
+  justify-content: center;
+}
+
+@media (min-width: 767px) {
+  .item-details-header .backBtn {
+    width: 16.666666% !important;
+  }
+}
+@media (max-width: 767px) {
+  .codeASC::after,
+  .nameASC::after,
+  .catASC::after,
+  .subcatASC::after,
+  .codeDESC::after,
+  .nameDESC::after,
+  .catDESC::after,
+  .subcatDESC::after {
+    border-width: 4px;
+    top: 25%;
+    transform: translateX(10%);
+  }
+  .editItemForm .input-group span,
+  .editItemForm .input-group select,
+  .editItemForm .input-group input,
+  .addItemForm .input-group span,
+  .addItemForm .input-group select,
+  .addItemForm .input-group input,
+  .quantity .input-group span,
+  .quantity .input-group select,
+  .quantity .input-group input {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .editItemForm .input-group span:first-of-type,
+  .quantity .input-group span:first-of-type,
+  .addItemForm .input-group span:first-of-type {
+    border-top-left-radius: var(--bs-border-radius) !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .editItemForm .input-group select:last-of-type,
+  .editItemForm .input-group input:last-of-type,
+  .quantity .input-group select:last-of-type,
+  .quantity .input-group input:last-of-type,
+  .addItemForm .input-group select:last-of-type,
+  .addItemForm .input-group input:last-of-type {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+  }
+  .addItemForm .input-group {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .editItemForm .input-group {
+    width: 100% !important;
+  }
+  .editItemForm .input-group span,
+  .editItemForm .input-group select,
+  .editItemForm .input-group input,
+  .addItemForm .input-group span,
+  .addItemForm .input-group select,
+  .addItemForm .input-group input,
+  .quantity .input-group span,
+  .quantity .input-group select,
+  .quantity .input-group input {
+    width: 50% !important;
+    margin-left: 0 !important;
+  }
+  .editItemForm .input-group span:first-of-type,
+  .quantity .input-group span:first-of-type,
+  .addItemForm .input-group span:first-of-type {
+    border-bottom-right-radius: 0 !important;
+  }
+  .editItemForm .input-group select:last-of-type,
+  .editItemForm .input-group input:last-of-type,
+  .quantity .input-group select:last-of-type,
+  .quantity .input-group input:last-of-type,
+  .addItemForm .input-group select:last-of-type,
+  .addItemForm .input-group input:last-of-type {
+    border-top-left-radius: 0 !important;
+  }
+  .editItemForm .input-group span:nth-child(2),
+  .editItemForm .input-group select:nth-child(2),
+  .editItemForm .input-group input:nth-child(2),
+  .quantity .input-group span:nth-child(2),
+  .quantity .input-group input:nth-child(2),
+  .quantity .input-group select:nth-child(2),
+  .addItemForm .input-group span:nth-child(2),
+  .addItemForm .input-group input:nth-child(2),
+  .addItemForm .input-group select:nth-child(2) {
+    border-top-left-radius: var(--bs-border-radius) !important;
+  }
+  .editItemForm .input-group span:nth-last-child(2),
+  .quantity .input-group span:nth-last-child(2),
+  .addItemForm .input-group span:nth-last-child(2) {
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+  }
+}
 /* End Items Page */
 /* ==================== */
 /* Start Records Page */
@@ -308,6 +526,18 @@ form.quantity span.input-group-text {
 .new-user-form,
 .receive {
   display: none;
+}
+
+@media (min-width: 768px) {
+  .new-user-form {
+    width: 75% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .new-user-form {
+    width: 50% !important;
+  }
 }
 
 .inputSpan {
@@ -334,11 +564,45 @@ form.quantity span.input-group-text {
 .form {
   background-color: #b6b6b6;
 }
+
+@media (max-width: 767px) {
+  .recordsTableToday *,
+  .oldRecordsTable * {
+    padding: 0 !important;
+  }
+
+  .recordsTableToday th,
+  .oldRecordsTable th {
+    padding-bottom: 4px !important;
+  }
+
+  .recordsTableToday span.returnItem,
+  .oldRecordsTable span.return {
+    font-size: 12px;
+    padding: 4px !important;
+  }
+
+  .recordsTableToday tr td:last-of-type,
+  .oldRecordsTable tr td:last-of-type {
+    padding: 4px !important;
+  }
+}
+
+.oldRecordsTable tr td,
+.oldRecordsTable tr th {
+  text-align: center;
+  vertical-align: middle;
+}
+
 /* End Records Page */
 /* ==================== */
 /* Start Installments Page */
 .instaItem {
   background-color: #b6b6b6;
+}
+
+.insta-labels {
+  margin-bottom: 10px !important;
 }
 
 .instaItem .row {
@@ -347,6 +611,12 @@ form.quantity span.input-group-text {
 
 a.instaName {
   min-height: 50px;
+}
+
+@media (max-width: 767px) {
+  a.instaName h3 {
+    font-size: 0.9rem;
+  }
 }
 
 .card-body.instaItem .col,
@@ -386,6 +656,10 @@ tr.bad.active {
 tr[data-done="1"] {
   text-decoration: line-through;
 }
+
+.installments-money tr {
+  vertical-align: middle;
+}
 /* End Installments Page */
 /* ==================== */
 /* Start Bills Page */
@@ -395,6 +669,30 @@ tr[data-done="1"] {
 .newBillForm.active {
   display: block;
   background-color: #dddddd8e;
+}
+
+@media (max-width: 991px) {
+  .newBillForm .input-group span,
+  .newBillForm .input-group input,
+  .newBillForm button {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+  .newBillForm .input-group span:first-of-type {
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: var(--bs-border-radius) !important;
+  }
+  .newBillForm .input-group button:last-of-type {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .newBillForm .input-group {
+    width: 100% !important;
+  }
 }
 .newBillForm .astrisk {
   right: 99%;
@@ -429,7 +727,7 @@ tr[data-done="1"] {
   position: absolute;
   transition: ease-in-out 0.4s;
   top: 50%;
-  right: 120%;
+  right: 140%;
   transform: translate(50%, -50%);
 }
 .dataInfo .row.data:hover .delBill {
@@ -442,12 +740,32 @@ h1.calcs {
   margin-top: 200px;
 }
 
+@media (max-width: 767px) {
+  h1.calcs {
+    margin-top: 50px;
+  }
+}
+
 .options {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .options .row {
   height: 200px;
+}
+
+@media (max-width: 767px) {
+  .options {
+    margin-top: 55px;
+  }
+
+  .options .row {
+    height: 440px;
+  }
+}
+
+.totalStore {
+  width: fit-content;
 }
 
 .options .col {
@@ -471,6 +789,37 @@ h1.calcs {
 
 .spendingsForm .astrisk {
   right: 97%;
+}
+
+@media (max-width: 991px) {
+  .spendingsForm span,
+  .spendingsForm input,
+  .spendingsForm button,
+  .spendingsForm a {
+    width: 100% !important;
+    justify-content: center;
+    text-align: center;
+  }
+  .spendingsForm span:first-of-type {
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: var(--bs-border-radius) !important;
+  }
+  .spendingsForm a:last-of-type {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+  }
+  .forth {
+    width: 100px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  .forth span {
+    font-size: small;
+  }
+  .spendingsTable th,
+  .spendingsTable td {
+    text-align: center;
+  }
 }
 
 .spendingMsg,
@@ -510,21 +859,42 @@ tbody.data tr.infoData {
 .monthsCalcshead {
   margin-top: 100px;
 }
-.months .col {
+.months .col,
+.months .col-6 {
+  color: #eee;
+}
+
+.months a {
   display: flex;
+  height: 100px;
   align-items: center;
   justify-content: center;
   background-color: #00d2d3;
-  color: #eee;
   font-size: 22px;
   font-weight: bold;
-  height: 100px;
+}
+
+.months a:hover,
+.months a:focus {
+  background-color: #00d2d3;
 }
 
 .monthsOptions .input-group {
   width: 35%;
 }
 
+@media (max-width: 767px) {
+  .monthsOptions .input-group {
+    width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  .monthlyCalcHeader,
+  .yearlyCalcHeader {
+    width: 75% !important;
+  }
+}
+
 /* End Calcs Page */
-/* ==================== */
 /* ==================== */

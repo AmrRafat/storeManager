@@ -8,12 +8,22 @@ if (isset($_SESSION['username'])) {
     $application = isset($_GET['application']) ? $_GET['application'] : 'show';
     $currentYear = date('m') >= 4 ? date('Y') : date('Y') - 1;
     ?>
-<div class="container">
+<div class="container px-4 px-lg-0">
     <?php
 if ($application == 'show') {?>
     <h1 class="calcs text-center">الحسابات</h1>
+    <?php
+$totalStore = 0;
+        $stmt = $con->prepare("SELECT * FROM items");
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+        foreach ($rows as $row) {
+            $totalStore = $totalStore + (($row['amount'] - $row['amount_sold']) * $row['purchase_price']);
+        }
+        ?>
+                <h3 class="text-center border border-primary totalStore rounded-pill px-3 py-2 mx-auto">رأس مال المحل: <?php echo $totalStore ?></php></h3>
     <div class="options">
-        <div class="row gap-4 justify-content-center text-center ">
+        <div class="row flex-column flex-md-row gap-4 justify-content-center text-center ">
             <a href="?application=spendings" class="col d-flex justify-content-center align-items-center rounded-4 text-decoration-none spendings">المصاريف</a>
             <a href="?application=year&year=<?php echo $currentYear ?>" class="col d-flex justify-content-center align-items-center rounded-4 text-decoration-none year">الحسابات السنوية</a>
             <a href="?application=month" class="col d-flex justify-content-center align-items-center rounded-4 text-decoration-none month">الحسابات الشهرية</a>
@@ -24,7 +34,7 @@ if ($application == 'show') {?>
     <div class="card">
         <div class="card-header p-3">
             <form class="text-center spendingsForm form-control py-3">
-                <div class="input-group w-75 mx-auto">
+                <div class="input-group w-75 mx-auto flex-column flex-lg-row">
                     <span class="input-group-text">نوع المصاريف</span>
                     <input type="text" name="spending_name" class="spending_name form-control" required="required">
                     <span class="input-group-text">التاريخ</span>
@@ -48,7 +58,7 @@ $stmt = $con->prepare("SELECT * FROM spendings ORDER BY date DESC");
             ?>
             <div class="alert alert-success text-center spendingMsg">تمت الإضافة بنجاح</div>
             <div class="alert alert-success text-center spendingDelMsg">تمت المسح بنجاح</div>
-                    <table class="table table-striped">
+                    <table class="table table-striped spendingsTable">
                         <thead>
                             <tr>
                                 <th>المصاريف</th>
@@ -58,7 +68,6 @@ $stmt = $con->prepare("SELECT * FROM spendings ORDER BY date DESC");
                             </tr>
                         </thead>
                         <tbody>
-
                             <?php
 foreach ($data as $info) {
                 ?>
@@ -66,7 +75,7 @@ foreach ($data as $info) {
     <td><?php echo $info['spendingName'] ?></td>
     <td><?php echo $info['date'] ?></td>
     <td><?php echo $info['amount'] ?></td>
-    <td class="forth"><span class="btn btn-danger spendingDel">حذف</span></td>
+    <td class="forth"><span class="btn btn-danger spendingDel py-1">حذف</span></td>
 </tr>
 <?php }?>
 </tbody>
@@ -93,31 +102,31 @@ if (isset($_GET['selectedYear'])) {
         echo '<span class="selectedYear">' . $year . '</span>';
         ?>
 </h1>
-    <div class="months">
-        <div class="row justify-content-center gap-4 mb-4">
-            <a href="?application=analyse&month=04&year=<?php echo $year ?>" class="col text-decoration-none btn">4 - إبريل</a>
-            <a href="?application=analyse&month=05&year=<?php echo $year ?>" class="col text-decoration-none btn">5 - مايو</a>
-            <a href="?application=analyse&month=06&year=<?php echo $year ?>" class="col text-decoration-none btn">6 - يونيو</a>
-            <a href="?application=analyse&month=07&year=<?php echo $year ?>" class="col text-decoration-none btn">7 - يوليو</a>
-        </div>
-        <div class="row justify-content-center gap-4 mb-4">
-            <a href="?application=analyse&month=08&year=<?php echo $year ?>" class="col text-decoration-none btn">8 - أغسطس</a>
-            <a href="?application=analyse&month=09&year=<?php echo $year ?>" class="col text-decoration-none btn">9 - سبتمبر</a>
-            <a href="?application=analyse&month=10&year=<?php echo $year ?>" class="col text-decoration-none btn">10 - أكتوبر</a>
-            <a href="?application=analyse&month=11&year=<?php echo $year ?>" class="col text-decoration-none btn">11 - نوفمبر</a>
-        </div>
-        <div class="row justify-content-center gap-4 mb-4">
-            <a href="?application=analyse&month=12&year=<?php echo $year ?>" class="col text-decoration-none btn">12 - ديسمبر</a>
-            <a href="?application=analyse&month=01&year=<?php echo $year ?>" class="col text-decoration-none btn">1 - يناير</a>
-            <a href="?application=analyse&month=02&year=<?php echo $year ?>" class="col text-decoration-none btn">2 - فبراير</a>
-            <a href="?application=analyse&month=03&year=<?php echo $year ?>" class="col text-decoration-none btn">3 - مارس</a>
-        </div>
-    </div>
-    <div class="monthsOptions">
+<div class="monthsOptions mb-3">
         <div class="input-group mx-auto">
             <input type="number" name="year" id="year" min="2020" max="2099" step="1" class="text-center form-control" value="<?php echo $year = date('Y') ?>">
             <button type="button" class="btn btn-success changeYear">تغيير السنة</button>
             <a href="?application=show" class="btn btn-primary text-decoration-none">رجوع</a>
+        </div>
+    </div>
+    <div class="months">
+        <div class="row justify-content-center">
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=04&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">4 - إبريل</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=05&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">5 - مايو</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=06&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">6 - يونيو</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=07&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">7 - يوليو</a></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=08&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">8 - أغسطس</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=09&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">9 - سبتمبر</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=10&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">10 - أكتوبر</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=11&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">11 - نوفمبر</a></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=12&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">12 - ديسمبر</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=01&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">1 - يناير</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=02&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">2 - فبراير</a></div>
+            <div class="col-6 col-lg p-3"><a href="?application=analyse&month=03&year=<?php echo $year ?>" class="text-reset text-decoration-none btn">3 - مارس</a></div>
         </div>
     </div>
     <?php } elseif ($application == 'analyse') {?>
@@ -157,31 +166,31 @@ if (isset($_GET['selectedYear'])) {
                 // Showing Main info: total income, total purchase price, total spendings, & profit
                 $profit = $income - $purchases - floatval($totalSpendings);
                 ?>
-                <div class="row text-center mb-3 px-3 gap-3">
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">إجمالى الإيراد</label></div>
-                            <div class="col"><label class="form-label"><?php echo $income ?></label></div>
+                <div class="row text-center monthlyCalcHeader mb-3 w-100 mx-auto justify-content-center">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">إجمالى الإيراد</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo $income ?></span>
                         </div>
                     </div>
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">إجمالى سعر الشراء</label></div>
-                            <div class="col"><label class="form-label"><?php echo $purchases ?></label></div>
+                    <div class="col-12 col-md-6">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">إجمالى سعر الشراء</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo $purchases ?></span>
                         </div>
                     </div>
                 </div>
-                <div class="row text-center px-3 gap-3">
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">إجمالى المصاريف</label></div>
-                            <div class="col"><label class="form-label"><?php echo round($totalSpendings, 2) ?></label></div>
+                <div class="row text-center monthlyCalcHeader w-100 mx-auto justify-content-center">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">إجمالى المصاريف</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo round($totalSpendings, 2) ?></span>
                         </div>
                     </div>
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">الربح</label></div>
-                            <div class="col"><label class="form-label"><?php echo round($profit, 2) ?></label></div>
+                    <div class="col-12 col-md-6">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">الربح</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo round($profit, 2) ?></span>
                         </div>
                     </div>
                 </div>
@@ -302,44 +311,42 @@ $lastDay = date('d', strtotime($lastDate));
                 // Showing Main info: total income, total purchase price, total spendings, & profit
                 $profit = $totalIncome - $totalExpense - floatval($totalSpendings);
                 ?>
-                <div class="row text-center mb-3 px-3 gap-3">
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">إجمالى الإيراد</label></div>
-                            <div class="col"><label class="form-label"><?php echo $totalIncome ?></label></div>
+                <div class="row text-center yearlyCalcHeader mb-3 w-100 mx-auto justify-content-center">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">إجمالى الإيراد</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo $totalIncome ?></span>
                         </div>
                     </div>
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">إجمالى سعر الشراء</label></div>
-                            <div class="col"><label class="form-label"><?php echo $totalExpense ?></label></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row text-center mb-3 px-3 gap-3">
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">إجمالى المصاريف</label></div>
-                            <div class="col"><label class="form-label"><?php echo round($totalSpendings, 2) ?></label></div>
-                        </div>
-                    </div>
-                    <div class="col form-control">
-                        <div class="row align-items-center">
-                            <div class="col"><label class="form-label">الربح</label></div>
-                            <div class="col"><label class="form-label"><?php echo round($profit, 2) ?></label></div>
+                    <div class="col-12 col-md-6">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">إجمالى سعر الشراء</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo $totalExpense ?></span>
                         </div>
                     </div>
                 </div>
-                <div class="row text-center">
-                    <div class="col-6">
-                        <div class="form-control">
-                            <div class="row align-items-center">
-                                <div class="col"><label class="form-label">إجمالى الفواتير</label></div>
-                                <div class="col"><label class="form-label"><?php echo $totalBill ?></label></div>
-                            </div>
+                <div class="row text-center yearlyCalcHeader mb-3 w-100 mx-auto justify-content-center">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">إجمالى المصاريف</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo round($totalSpendings, 2) ?></span>
                         </div>
                     </div>
+                    <div class="col-12 col-md-6">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">الربح</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo round($profit, 2) ?></span>
+                        </div>
                     </div>
+                </div>
+                <div class="row text-center yearlyCalcHeader w-100 mx-auto justify-content-center">
+                    <div class="col-12 col-md-6">
+                        <div class="input-group w-100">
+                            <span class="input-group-text form-control justify-content-center">إجمالى الفواتير</span>
+                            <span class="input-group-text form-control justify-content-center"><?php echo $totalBill ?></span>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 </div>
             <div class="card">

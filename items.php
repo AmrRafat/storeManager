@@ -8,7 +8,7 @@ if (isset($_SESSION['username'])) {
     $application = isset($_GET['application']) ? $_GET['application'] : 'show';
     global $beforeEdit;
     ?>
-<div class="container">
+<div class="container px-3 px-lg-0">
     <?php
 if ($application == 'show') {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,13 +17,16 @@ if ($application == 'show') {
         ?>
     <h1 class="text-center">المخزن</h1>
     <div class="card row mt-4">
-        <div class="card-header ps-4 pe-4 py-3 d-flex justify-content-between align-items-middle">
-                <h4 class="">المخزن</h4>
-                <form class="searchForm" action="items.php?application=show" method="POST">
-                    <div class="input-group">
+        <div class="card-header py-3">
+            <div class="row mb-1 mb-lg-2 mb-xl-3 align-items-center justify-content-between">
+                <h4 class="col ps-0 mb-0 text-end">المخزن</h4>
+            </div>
+            <div class="row justify-content-between align-items-center">
+                <form class="col-12 col-lg-6 searchForm py-3 p-lg-0 px-2" action="items.php?application=show" method="POST">
+                    <div class="input-group flex-nowrap flex-column flex-lg-row">
                         <span class="input-group-text">القسم</span>
                         <select class="form-control" name="cat" id="cat">
-                            <option value="0">برجاء اختيار القسم</option>
+                            <option value="0">....</option>
                             <?php
 $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         $stmt->execute();
@@ -72,11 +75,14 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
                         <input type="submit" class="btn btn-primary showOnSelection" value="عرض الأصناف">
                     </div>
                 </form>
-            <div class="btns">
-                <span class="btn btn-primary showAll">عرض الكل</span>
-                <a class="text-decoration-none btn btn-primary" href="items.php?application=alert">إنذار نفاد صنف</a>
-                <a class="text-decoration-none btn btn-primary" href="items.php?application=addquantity">إضافة كمية</a>
-                <a class="text-decoration-none btn btn-primary" href="items.php?application=additem">إضافة صنف</a>
+            <div class="btns col-12 col-lg-6">
+                <div class="row justify-content-around justify-content-lg-end mx-auto gap-0 gap-md-1 align-items-center">
+                    <span class="col-5 col-md mb-2 mb-md-0 btn btn-primary showAll">عرض الكل</span>
+                    <a class="col-5 col-md mb-2 mb-md-0 text-decoration-none btn btn-primary" href="items.php?application=alert">إنذار نفاد صنف</a>
+                    <a class="col-5 col-md text-decoration-none btn btn-primary" href="items.php?application=addquantity">إضافة كمية</a>
+                    <a class="col-5 col-md text-decoration-none btn btn-primary" href="items.php?application=additem">إضافة صنف</a>
+                </div>
+            </div>
             </div>
         </div>
         <div class="card-body">
@@ -111,15 +117,13 @@ if (
                 echo '<div class="text-center alert alert-info">لا توجد أصناف بعد... يرجى إضافة صنف جديد</div>';
             } else {
                 ?>
-            <table class="table table-striped text-center">
-                <tr>
-                    <th>كود الصنف</th>
+            <table class="table table-striped text-center itemsTable1">
+                <tr class="align-middle">
+                    <th>الكود</th>
                     <th>اسم الصنف</th>
                     <th>تاريخ الشراء</th>
                     <th>سعر الشراء</th>
                     <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -135,11 +139,9 @@ foreach ($rows as $row) {
                     <td><?php echo $rows2[0]['adding_date'] ?></td>
                     <td><?php echo $rows2[0]['purchase_price'] ?></td>
                     <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
                     <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-2 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -176,16 +178,14 @@ foreach ($rows as $row) {
                 echo '<div class="text-center alert alert-info">لا توجد أصناف بعد... يرجى إضافة صنف جديد</div>';
             } else {
                 ?>
-            <table class="table table-striped text-center" data-cat = "<?php echo $selectedCat ?>">
-                <tr>
-                    <th class="catcodes">كود الصنف</th>
+            <table class="table table-striped text-center itemsTable2" data-cat = "<?php echo $selectedCat ?>">
+                <tr class="align-middle">
+                    <th class="catcodes">الكود</th>
                     <th class="catnames">اسم الصنف</th>
                     <th class="catsubcats">القسم الفرعى</th>
                     <th>تاريخ الشراء</th>
                     <th>سعر الشراء</th>
                     <th>الموجود حاليا</th>
-                    <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
                     <th>التحكم</th>
                 </tr>
                 <?php
@@ -202,11 +202,9 @@ foreach ($rows as $row) {
                     <td><?php echo $rows2[0]['adding_date'] ?></td>
                     <td><?php echo $rows2[0]['purchase_price'] ?></td>
                     <td><?php echo $availableAmount ?></td>
-                    <td><?php echo $row['least_amount'] ?></td>
-                    <td><?php echo $row['fullname'] ?></td>
                     <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
-                        <a class="text-decoration-none btn btn-info" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
+                        <a class="text-decoration-none btn btn-success px-1 px-lg-2 mb-2 mb-lg-0" href="?application=edit&itemcode=<?php echo $row['item_code'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-info px-1 px-lg-2" href="?application=info&itemcode=<?php echo $row['item_code'] ?>">تفاصيل</a>
                     </td>
                 </tr>
                 <?php }?>
@@ -225,17 +223,16 @@ foreach ($rows as $row) {
         ?>
             <h1 class="text-center">إضافة صنف جديد</h1>
             <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <h3 class="pe-3">إضافة صنف جديد</h3>
-                    <a href="?application=show" class="btn btn-primary text-decoration-none">رجوع</a>
+                <div class="card-header">
+                    <div class="row align-items-center justify-content-between px-2">
+                        <h3 class="mb-0 col-7">إضافة صنف جديد</h3>
+                        <a href="?application=show" class="col-3 col-lg-1 btn btn-primary text-decoration-none">رجوع</a>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <form class="form-control text-center item p-3" action="items.php?application=apply&way=item" method="POST">
-                        <div class="row mb-3 ps-4">
-                            <div class="col">
-                                <label class="form-label">القسم</label>
-                            </div>
-                            <div class="col">
+                    <form class="form-control text-center item p-3 addItemForm" action="items.php?application=apply&way=item" method="POST">
+                        <div class="input-group w-75 mx-auto">
+                            <span class="input-group-text">القسم</span>
                             <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
                                 <option value="0">برجاء اختيار القسم</option>
                                 <?php
@@ -257,11 +254,7 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         }
         ?>
                             </select>
-                            </div>
-                            <div class="col">
-                            <label class="form-label">القسم الفرعى</label>
-                        </div>
-                        <div class="col">
+                            <span class="input-group-text">القسم الفرعى</span>
                             <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
                                 <?php
 if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
@@ -287,37 +280,20 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
         ?>
                             </select>
                         </div>
-                    </div>
-                    <div class="row mb-3 ps-4">
-                        <div class="col">
-                            <label class="form-label">اسم الصنف</label>
-                        </div>
-                        <div class="col">
+                        <div class="input-group w-75 mx-auto my-3">
+                            <span class="input-group-text">اسم الصنف</span>
                             <input type="text" class="z-3 form-control text-center" name="item_name" required='required' autocomplete="off" placeholder="اسم الصنف">
-                            </div>
-                            <div class="col">
-                            <label class="form-label">سعر الشراء</label>
-                        </div>
-                        <div class="col">
+                            <span class="input-group-text">سعر الشراء</span>
                             <input type="number" min="0" step="0.01" class="z-3 text-center form-control" name="item_purchase_price" required='required' autocomplete="off" placeholder="سعر الشراء">
                         </div>
-                    </div>
-                    <div class="row mb-3 ps-4">
-                        <div class="col">
-                            <label class="form-label">الكمية</label>
-                        </div>
-                        <div class="col">
+                        <div class="input-group w-75 mx-auto mb-3">
+                            <span class="input-group-text">الكمية</span>
                             <input type="number" min="1" class="z-3 text-center form-control" name="item_amount" required='required' autocomplete="off" placeholder="الكمية">
-                            </div>
-                            <div class="col">
-                            <label class="form-label">أقل كمية</label>
-                        </div>
-                        <div class="col">
+                            <span class="input-group-text">أقل كمية</span>
                             <input type="number" min="0" class="z-3 text-center form-control" name="item_leastamount" required='required' autocomplete="off" placeholder="أقل كمية">
                         </div>
-                    </div>
                     <div class="row justify-content-center">
-                        <div class="col-3">
+                        <div class="col-5 col-md-4 col-lg-2">
                             <input type="submit" class="btn btn-primary form-control" value="إضافة صنف">
                         </div>
                     </div>
@@ -328,19 +304,18 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
         unset($_POST['catid']);
         ?>
             <h1 class="text-center">إضافة كمية جديدة</h1>
-            <div class="card row">
-                <div class="card-header d-flex justify-content-between">
-                    <h3 class="pe-3">إضافة كمية جديدة</h3>
+            <div class="card">
+                <div class="card-header px-3 d-flex align-items-center justify-content-between">
+                    <h3 class="mb-0">إضافة كمية جديدة</h3>
                     <a href="?application=show" class="btn btn-primary text-decoration-none">رجوع</a>
                 </div>
                 <div class="card-body">
                 <form class="form-control text-center quantity p-3" action="items.php?application=apply&way=quantity" method="POST">
-                    <div class="row">
-                        <div class="input-group">
-                            <span class="input-group-text">الكود</span>
-                            <select class="form-control text-center z-3" required = "required" name="code" id="code">
-                                    <option value="0">الكود</option>
-                                    <?php
+                    <div class="input-group w-75 mx-auto">
+                        <span class="input-group-text">الكود</span>
+                        <select class="form-control text-center z-3" required = "required" name="code" id="code">
+                                <option value="0">....</option>
+                                <?php
 $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDER BY item_code");
         $stmt->execute();
         $codes = $stmt->fetchAll();
@@ -353,11 +328,11 @@ $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 GROUP BY item_code ORDE
             echo '</option>';
         }
         ?>
-                                </select>
-                            <span class="input-group-text">القسم</span>
-                            <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
-                                <option value="0">برجاء اختيار القسم</option>
-                                <?php
+                            </select>
+                        <span class="input-group-text">القسم</span>
+                        <select class="form-control text-center z-3" required = "required" name="cat" id="cat">
+                            <option value="0">برجاء اختيار القسم</option>
+                            <?php
 $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
         $stmt->execute();
         $cats = $stmt->fetchAll();
@@ -375,14 +350,16 @@ $stmt = $con->prepare("SELECT * FROM cats WHERE del = 0 ORDER BY cat_name");
             echo '</option>';
         }
         ?>
-                            </select>
-                            <span class="input-group-text">القسم الفرعى</span>
-                            <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
-                            <option selected value="0">برجاء اختيار القسم أولا</option>
-                                <?php
+                        </select>
+                    </div>
+                        <div class="input-group mx-auto my-3 w-75">
+                        <span class="input-group-text">القسم الفرعى</span>
+                        <select name="subcat" class="form-control text-center z-3" required = "required" id="subcat">
+                        <option selected value="0">برجاء اختيار القسم أولا</option>
+                            <?php
 if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
-                            <option selected value="0">برجاء اختيار القسم أولا</option>
-                            <?php } elseif (isset($selectedSubCat)) {
+                        <option selected value="0">برجاء اختيار القسم أولا</option>
+                        <?php } elseif (isset($selectedSubCat)) {
             $stmt = $con->prepare("SELECT * FROM subcats WHERE del = 0 ORDER BY subcat_name");
             $stmt->execute();
             $subcats = $stmt->fetchAll();
@@ -401,14 +378,14 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
             }
         }
         ?>
-                            </select>
-                            <span class="input-group-text">الصنف</span>
-                            <select name="item1" class="form-control text-center z-3" required = "required" id="item1">
-                            <option selected value="0">برجاء اختيار القسم أولا</option>
-                                <?php
+                        </select>
+                        <span class="input-group-text">الصنف</span>
+                        <select name="item1" class="form-control text-center z-3" required = "required" id="item1">
+                        <option selected value="0">برجاء اختيار القسم أولا</option>
+                            <?php
 if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
-                            <option selected value="0">برجاء اختيار القسم أولا</option>
-                            <?php } elseif (isset($selectedSubCat)) {
+                        <option selected value="0">برجاء اختيار القسم أولا</option>
+                        <?php } elseif (isset($selectedSubCat)) {
             $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 ORDER BY item_name");
             $stmt->execute();
             $items = $stmt->fetchAll();
@@ -422,19 +399,16 @@ if (isset($selectedSubCat) && $selectedSubCat == 0) {?>
             }
         }
         ?>
-                            </select>
-                        </div>
+                        </select>
                     </div>
-                    <div class="row w-50 mx-auto my-3">
-                        <div class="input-group">
+                        <div class="input-group my-3 w-75 mx-auto">
                             <span class="input-group-text">سعر الشراء</span>
                             <input type="number" min="0" step="0.01" class="z-3 text-center form-control" name="item_purchase_price" required='required' autocomplete="off" placeholder="سعر الشراء">
                             <span class="input-group-text">الكمية</span>
                             <input type="number" min="1" class="z-3 text-center form-control" name="item_amount" required='required' autocomplete="off" placeholder="الكمية">
                         </div>
-                    </div>
                     <div class="row justify-content-center">
-                        <div class="col-3">
+                        <div class="col-5 col-md-4 col-lg-2">
                             <input type="submit" class="btn btn-primary form-control" value="إضافة صنف">
                         </div>
                     </div>
@@ -640,18 +614,29 @@ $stmt = $con->prepare("SELECT * FROM items WHERE del = 0 AND cat_id = ? AND subc
         ?>
         <h1 class="text-center">عرض تفاصيل الصنف</h1>
         <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <h3>
-                    <?php
-echo 'تفاصيل الصنف: ' . $rows[0]['item_name'] . ' [كود( ' . $rows[0]['item_code'] . ' )]';
+            <div class="card-header item-details-header">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-9">
+                        <h3 class="col-12 text-end fs-6">
+                            تفاصيل الصنف:
+                        </h3>
+                        <h3 class="text-end col-12 fs-6">
+                            <?php
+echo $rows[0]['item_name'] . ' [كود ( ' . $rows[0]['item_code'] . ' )]';
         ?>
-                </h3>
-                <h3>
-                    <?php
+                        </h3>
+                        <h3 class="text-end col-12 fs-6">
+                            <?php
 echo '[المتاح: ' . $available . ']';
         ?>
-                </h3>
-                <a href="?applicatoin=show" class="btn btn-primary text-decoration-none">رجوع</a>
+                        </h3>
+                    </div>
+                    <div class="col-3 backBtn">
+                        <a href="?applicatoin=show" class="d-flex align-items-center justify-content-center btn btn-primary text-decoration-none">
+                                رجوع
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <table class="table table-striped text-center">
@@ -660,7 +645,6 @@ echo '[المتاح: ' . $available . ']';
                     <th>سعر الشراء</th>
                     <th>كمية الشراء</th>
                     <th>أقل عدد</th>
-                    <th>الشخص الذى أنشأه</th>
                 </tr>
                 <?php
 foreach ($rows as $row) {
@@ -670,7 +654,6 @@ foreach ($rows as $row) {
                         <td><?php echo $row['purchase_price'] ?></td>
                         <td><?php echo $row['amount'] ?></td>
                         <td><?php echo $row['least_amount'] ?></td>
-                        <td><?php echo $row['fullname'] ?></td>
                     </tr>
                     <?php }?>
                 </table>
@@ -757,8 +740,8 @@ foreach ($rows as $row) {
         ?>
     <h1 class="text-center">الأصناف على وشك النفاد</h1>
     <div class="card">
-        <div class="card-header d-flex justify-content-between">
-            <h4>الأصناف</h4>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">الأصناف</h4>
             <a href="?application=show" class="btn btn-primary text-decoration-none">رجوع</a>
         </div>
         <div class="card-body">

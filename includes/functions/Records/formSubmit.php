@@ -40,8 +40,8 @@ $stmt3->execute(array($today));
 $rows = $stmt3->fetchAll();
 $count = $stmt3->rowCount();
 ?>
-            <table class="table text-center table-striped">
-                <tr>
+            <table class="table text-center table-striped recordsTableToday">
+                <tr class="align-middle">
                     <th>كود الصنف</th>
                     <th>اسم الصنف</th>
                     <th>القسم</th>

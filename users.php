@@ -7,18 +7,20 @@ if (isset($_SESSION['username'])) {
     $today = date("j / n / Y");
     $application = isset($_GET['application']) ? $_GET['application'] : 'show';
     ?>
-<div class="container">
+<div class="container px-3">
     <input type="hidden" class="title" value="users">
     <?php
 if ($application == 'show') {
         ?>
     <h1 class="text-center">المستخدمين</h1>
     <div class="card row mt-4">
-        <div class="card-header ps-4 pe-4 d-flex justify-content-between">
-            <h4>المستخدمين</h4>
-            <div class="btns">
-                <a class="text-decoration-none btn btn-primary" href="users.php?application=add">إضافة مستخدم جديد</a>
-                <a class="text-decoration-none btn btn-primary" href="users.php?application=undo">المستخدمين المحذوفين</a>
+        <div class="card-header ps-4 pe-4">
+            <div class="row justify-content-lg-between justify-content-center">
+                <h4 class="col-12 col-lg-4 text-center text-lg-end">المستخدمين</h4>
+                <div class="btns col-12 col-lg-8 d-flex justify-content-center justify-content-lg-end">
+                    <a class="text-decoration-none btn btn-primary ms-2" href="users.php?application=add">إضافة مستخدم جديد</a>
+                    <a class="text-decoration-none btn btn-primary" href="users.php?application=undo">المستخدمين المحذوفين</a>
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -53,7 +55,7 @@ if ($row['access'] == 1) {
             }
                 ?></td>
                     <td>
-                        <a class="text-decoration-none btn btn-success" href="?application=edit&userid=<?php echo $row['user_id'] ?>">تعديل</a>
+                        <a class="text-decoration-none btn btn-success mb-2 mb-md-0" href="?application=edit&userid=<?php echo $row['user_id'] ?>">تعديل</a>
                         <a class="text-decoration-none btn btn-danger" href="?application=del&userid=<?php echo $row['user_id'] ?>">حذف</a>
                     </td>
                 </tr>
@@ -65,15 +67,15 @@ if ($row['access'] == 1) {
             <h1 class="text-center">إضافة مستخدم جديد</h1>
             <form class="form-control text-center userAdd p-4 mt-5" action="?application=apply" method="post">
                 <div class="row">
-                    <div class="col-10">
+                    <div class="col-12 col-lg-10">
                         <div class="row mb-3 justify-content-center">
-                            <div class="col-6">
+                            <div class="col-12 col-lg-6 mb-3 mb-lg-0">
                                 <div class="input-group">
                                     <span class="input-group-text justify-content-center">اسم المستخدم الكامل</span>
                                     <input type="text" class="z-3 text-center form-control" name="userfullname" required='required' autocomplete="off" placeholder=".......">
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-lg-6">
                                 <div class="input-group">
                                     <span class="input-group-text justify-content-center">صلاحية المستخدم</span>
                                     <select name="access" class="text-center z-3 form-control" required = 'required'>
@@ -84,13 +86,13 @@ if ($row['access'] == 1) {
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-6">
+                            <div class="col-12 col-lg-6 mb-3 mb-lg-0">
                                 <div class="input-group">
                                     <span class="input-group-text justify-content-center">اسم المستخدم للدخول</span>
                                     <input type="text" class="z-3 text-center form-control" name="username" required='required' autocomplete="off" placeholder="يستخدم فى صفحة الدخول">
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-lg-6">
                                 <div class="input-group">
                                     <span class="input-group-text justify-content-center">كلمة المرور</span>
                                     <input type="password" class="z-3 text-center form-control" name="password" required='required' autocomplete="off" placeholder="كلمة المرور">
@@ -98,9 +100,9 @@ if ($row['access'] == 1) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-12 col-lg-2 mt-3 mt-lg-0">
                         <div class="row justify-content-center">
-                            <div class="col">
+                            <div class="col-3 col-lg">
                                 <input type="submit" value="إضافة" class="form-control btn btn-primary">
                             </div>
                         </div>
@@ -147,27 +149,27 @@ if ($row['access'] == 1) {
             $stmt->execute(array($userid));
             $user = $stmt->fetch();?>
             <h1 class="text-center">تعديل المستخدم</h1>
-            <form class="form-control text-center p-4 w-75 mx-auto rounded-4 edit-app-user" action="?application=update&userid=<?php echo $userid ?>" method="post">
+            <form class="form-control text-center p-3 p-lg-4 w-100 w-lg-75 mx-auto rounded-4 edit-app-user" action="?application=update&userid=<?php echo $userid ?>" method="post">
                 <input type="hidden" name="original_user_name" value="<?php echo $user['username'] ?>">
                 <input type="hidden" name="original_user_fullname" value="<?php echo $user['fullname'] ?>">
                 <input type="hidden" name="original_user_password" value="<?php echo $user['password'] ?>">
                 <input type="hidden" name="original_user_access" value="<?php echo $user['access'] ?>">
-                <div class="input-group">
+                <div class="input-group flex-column flex-lg-row align-items-center align-items-lg-start">
                     <span class="input-group-text justify-content-center">اسم السمتخدم بالكامل</span>
                     <span class="input-group-text justify-content-center"><?php echo $user['fullname'] ?></span>
                     <input type="text" class="z-3 text-center form-control" name="userfullname" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو">
                 </div>
-                <div class="input-group mt-3">
+                <div class="input-group flex-column flex-lg-row align-items-center align-items-lg-start mt-3">
                     <span class="input-group-text justify-content-center">سم المستخدم للدخول</span>
                     <span class="input-group-text justify-content-center"><?php echo $user['username'] ?></span>
                     <input type="text" class="z-3 text-center form-control" name="username" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو">
                 </div>
-                <div class="input-group mt-3">
+                <div class="input-group flex-column flex-lg-row align-items-center align-items-lg-start mt-3">
                     <span class="input-group-text justify-content-center">كلمة المرور</span>
                     <span class="input-group-text justify-content-center">***********</span>
                     <input type="password" class="z-3 text-center form-control" name="password" autocomplete="off" placeholder="يمكنك تغييره أو تركه كما هو">
                 </div>
-                <div class="input-group my-3">
+                <div class="input-group flex-column flex-lg-row align-items-center align-items-lg-start my-3">
                     <span class="input-group-text justify-content-center">صلاحية المستخدم</span>
                     <span class="input-group-text justify-content-center"><?php if ($user['access'] == 0) {echo 'بائع';} else {echo "صاحب محل";}?></span>
                     <select name="access" class="text-center form-control z-3">

@@ -7,22 +7,24 @@ if (isset($_SESSION['username'])) {
     $today = date("j / n / Y");
     $application = isset($_GET['application']) ? $_GET['application'] : 'show';
     ?>
-<div class="container">
+<div class="container px-3 px-lg-0">
     <?php
 if ($application == 'show') {
         ?>
     <h1 class="text-center">الأقسام</h1>
-    <div class="card row mt-4">
-        <div class="card-header ps-4 pe-4 d-flex justify-content-between">
-            <h4>الأقسام</h4>
-            <div class="btns">
-                <span class="btn btn-primary newCat">إضافة قسم جديد</span>
-                <a class="text-decoration-none btn btn-primary" href="cats.php?application=undo">الأقسام المحذوفة</a>
+    <div class="card mt-4">
+        <div class="card-header px-4">
+            <div class="row justify-content-between align-items-center">
+                <h4 class="col-12 col-lg-3 text-center text-lg-end">الأقسام</h4>
+                <div class="btns col-12 col-lg-9 justify-content-center justify-content-lg-end d-flex">
+                    <span class="btn btn-primary ms-3 newCat">إضافة قسم جديد</span>
+                    <a class="text-decoration-none btn btn-primary" href="cats.php?application=undo">الأقسام المحذوفة</a>
+                </div>
             </div>
         </div>
         <div class="card-body">
             <from class="catAdd">
-                <div class="input-group w-50 mx-auto p-3">
+                <div class="input-group w-100 w-md-75 w-lg-50 mx-auto p-3">
                     <input type="text" class="z-3 form-control text-center" name="cat_name" required='required' autocomplete="off" placeholder="اسم القسم">
                     <button type="submit" class="btnAdd btn btn-primary">إضافة</button>
                     <button type="button" class="btnEnd btn btn-danger">إغلاق</button>
@@ -55,7 +57,7 @@ foreach ($rows as $row) {?>
                         <td><?php echo $row['adding_date'] ?></td>
                         <td><?php echo $row['fullname'] ?></td>
                         <td>
-                            <a class="text-decoration-none btn btn-success ms-2" href="?application=edit&catid=<?php echo $row['cat_id'] ?>">تعديل</a>
+                            <a class="text-decoration-none btn btn-success ms-0 ms-lg-2 mb-2 mb-lg-0" href="?application=edit&catid=<?php echo $row['cat_id'] ?>">تعديل</a>
                             <a class="text-decoration-none btn btn-danger" href="?application=del&catid=<?php echo $row['cat_id'] ?>">حذف</a>
                         </td>
                     </tr>
@@ -79,10 +81,10 @@ foreach ($rows as $row) {?>
                     <input type="text" class="z-3 form-control text-center" name="cat_name" required='required' autocomplete="off" placeholder="الاسم الجديد للقسم">
                 </div>
                 <div class="row gab-3 justify-content-center">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-4">
                         <input type="submit" value="تعديل" class="form-control btn btn-primary">
                     </div>
-                    <div class="col-3">
+                    <div class="col-lg-3 col-4">
                         <a href="?application=show" class="btn btn-primary form-control text-decoration-none">رجوع</a>
                     </div>
                 </div>
